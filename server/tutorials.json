@@ -1,0 +1,27 @@
+[
+    {   
+        "id" : 0,
+        "title": "Lightning Components le nouveau framework Javascript de Salesforce !",
+        "subTitle": "Issue du framework Aura Open Source",
+        "text" : "<ul><li> Interfaçage des devis entre Salesforce et un outil interne (SQL Server)</li><li> Interfaçage des produits installés et sérialisés chez les clients entre Salesforce et Navision (SQL Server) </li> <li> Rédaction des spécifications techniques et fonctionnelles </li>      <li> Interfaçage des commandes de ventes et d’achats entre Navision et MySQL afin d’avoir un suivi complet des transactions</li>        <li> Paramétrage de l’environnement Salesforce : création de champs, d’objets, de données utiles pour le développement, de règles de validation, de processus pour encadrer l’interface de l’utilisateur</li>         <li> Maintenance et évolution des différents outils</li>          </ul>",
+        "createdBy" : "Thomas Paraiso",
+        "createdDate": "23 Décembre 2015"
+    },
+    {
+        "id" : 1,
+        "title": "Importer des données en masse dans Salesforce avec Dataloader.io et un fichier CSV.",
+        "subTitle": "",
+        "text" : "<ul><li> Interfaçage des devis entre Salesforce et un outil interne (SQL Server)</li><li> Interfaçage des produits installés et sérialisés chez les clients entre Salesforce et Navision (SQL Server) </li> <li> Rédaction des spécifications techniques et fonctionnelles </li>      <li> Interfaçage des commandes de ventes et d’achats entre Navision et MySQL afin d’avoir un suivi complet des transactions</li>        <li> Paramétrage de l’environnement Salesforce : création de champs, d’objets, de données utiles pour le développement, de règles de validation, de processus pour encadrer l’interface de l’utilisateur</li>         <li> Maintenance et évolution des différents outils</li>          </ul>",
+        "createdBy" : "Thomas Paraiso",
+        "createdDate": "23 Décembre 2015"
+    }
+    ,
+    {   
+        "id" : 2,
+        "title": "Importer des données en masse dans Salesforce avec Dataloader.io et un fichier CSV.",
+        "subTitle": "",
+        "text" : "<ul><li> Interfaçage des devis entre Salesforce et un outil interne (SQL Server)</li><li> Interfaçage des produits installés et sérialisés chez les clients entre Salesforce et Navision (SQL Server) </li> <li> Rédaction des spécifications techniques et fonctionnelles </li>      <li> Interfaçage des commandes de ventes et d’achats entre Navision et MySQL afin d’avoir un suivi complet des transactions</li>        <li> Paramétrage de l’environnement Salesforce : création de champs, d’objets, de données utiles pour le développement, de règles de validation, de processus pour encadrer l’interface de l’utilisateur</li>         <li> Maintenance et évolution des différents outils</li>          </ul>",
+        "createdBy" : "Thomas Paraiso",
+        "createdDate": "23 Décembre 2015"
+    }
+]

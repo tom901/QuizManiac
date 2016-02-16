@@ -1,0 +1,14 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "fs": "0.0.2",
+    "express": "~3.2.4"
+  },
+  "devDependencies": {
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
