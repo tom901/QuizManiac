@@ -1,0 +1,50 @@
+{
+    "type": "quiz",
+    "name": "QuizSimpsons",
+    "description": "Do you know the simpsons?",
+    "questions": [
+        {
+            "name": "Quel est le nom du père de Bart ?",
+            "answers": [
+                {
+                    "name": "Jacques",
+                    "weight": 0
+                },
+                {
+                    "name": "Homer",
+                    "weight": 1
+                },
+                {
+                    "name": "Pierre",
+                    "weight": 0
+                },
+                {
+                    "name": "Paul",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Quel est le nom de la mère de Bart ?",
+            "answers": [
+                {
+                    "name": "Jacqueline",
+                    "weight": 0
+                },
+                {
+                    "name": "Michelle",
+                    "weight": 0
+                },
+                {
+                    "name": "Marge",
+                    "weight": 1
+                },
+                {
+                    "name": "Roberta",
+                    "weight": 0
+                }
+            ]
+        }
+        
+    ]
+}

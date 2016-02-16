@@ -19,9 +19,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-app.get('/getAllQuiz', function(req, res) {
-    fs.readFile('tutorials.json', function(err, data) {
+app.get('/getQuizSimpsons', function(req, res) {
+    fs.readFile('quizSimpsons.json', function(err, data) {
         res.setHeader('Cache-Control', 'no-cache');
+        // var dataJson = JSON.parse(data);
+        // console.log('dataJson');
+        // console.log(dataJson);
+        // var quiz = new Quiz(dataJson.name);
+        // for(var i = 0; i < dataJson.questions.length ;i ++){
+        //     quiz.questions[i] = new Question(dataJson.questions[i].name);
+        //    for(var j = 0; j < dataJson.questions[i].answers.length ;j ++){
+        //         quiz.questions[i].answers.push(new Answer(dataJson.questions[i].answers[j].name,dataJson.questions[i].answers[j].weight ));
+        //    }
+        // }
+        // console.log('quiz');
+        // console.log(quiz);
         res.json(JSON.parse(data));
     });
 });
@@ -32,6 +44,7 @@ app.get('/', function(req,res){
     routesList.push('/createUser/:nameUser');
     routesList.push('/createGame/:nameUser/:nameGame/:numberPlayer');
     routesList.push('/joinUserInGame/:nameUser/:nameGame');
+    routesList.push('/getQuizSimpsons');
     res.send(routesList);
 });
 
@@ -76,8 +89,20 @@ function Game(nameGame, numberPlayer){
     this.stateGame = 1; // -1 partie terminé , 0 partie en cours, 1 partie en attente
     this.numberPlayer = numberPlayer;
     this.usersInGame = [];
+    this.quizList = [];
 }
-
+function Quiz(nameQuiz){
+    this.name = nameQuiz;
+    this.questions = [];
+}
+function Question(nameQuestion){
+    this.name = nameQuestion;
+    this.answers = [];
+}
+function Answer(answer, weight){
+    this.answer = answer;
+    this.weight = weight;
+}
 //FUNCTION UTIL
 function findUser(nameUser){
     for(var i = 0 ; i < usersList.length ; i++){
