@@ -44,6 +44,48 @@
                     "weight": 0
                 }
             ]
+        },
+        {
+            "name": "Combien d'enfants ont les simpsons ?",
+            "answers": [
+                {
+                    "name": "0",
+                    "weight": 0
+                },
+                {
+                    "name": "4",
+                    "weight": 0
+                },
+                {
+                    "name": "2",
+                    "weight": 0
+                },
+                {
+                    "name": "3",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "name": "Combien d'enfants a Apu Nahasapeemapetilon ?",
+            "answers": [
+                {
+                    "name": "2",
+                    "weight": 0
+                },
+                {
+                    "name": "4",
+                    "weight": 0
+                },
+                {
+                    "name": "8",
+                    "weight": 1
+                },
+                {
+                    "name": "12",
+                    "weight": 0
+                }
+            ]
         }
         
     ]
