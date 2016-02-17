@@ -1,1 +1,9 @@
 /* Empty. Add your own CSS if you like */
+
+/* CSS for signup page */
+.item-Override {
+    background-color: transparent;
+}
+.input-label-Override{
+	color:white;
+}
