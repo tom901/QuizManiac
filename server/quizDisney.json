@@ -1,0 +1,92 @@
+{
+    "type": "quiz",
+    "name": "QuizDisney",
+    "description": "Connaissez-vous bien les personnages de disney ?",
+    "questions": [
+        {
+            "name": "Quel est le nom du père de Bart ?",
+            "answers": [
+                {
+                    "name": "Jacques",
+                    "weight": 0
+                },
+                {
+                    "name": "Homer",
+                    "weight": 1
+                },
+                {
+                    "name": "Pierre",
+                    "weight": 0
+                },
+                {
+                    "name": "Paul",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Quel est le nom de la mère de Bart ?",
+            "answers": [
+                {
+                    "name": "Jacqueline",
+                    "weight": 0
+                },
+                {
+                    "name": "Michelle",
+                    "weight": 0
+                },
+                {
+                    "name": "Marge",
+                    "weight": 1
+                },
+                {
+                    "name": "Roberta",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Combien d'enfants ont les simpsons ?",
+            "answers": [
+                {
+                    "name": "0",
+                    "weight": 0
+                },
+                {
+                    "name": "4",
+                    "weight": 0
+                },
+                {
+                    "name": "2",
+                    "weight": 0
+                },
+                {
+                    "name": "3",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "name": "Combien d'enfants a Apu Nahasapeemapetilon ?",
+            "answers": [
+                {
+                    "name": "2",
+                    "weight": 0
+                },
+                {
+                    "name": "4",
+                    "weight": 0
+                },
+                {
+                    "name": "8",
+                    "weight": 1
+                },
+                {
+                    "name": "12",
+                    "weight": 0
+                }
+            ]
+        }
+        
+    ]
+}

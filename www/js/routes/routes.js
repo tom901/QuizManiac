@@ -10,7 +10,7 @@ angular.module('app.routes', [])
     
       
     .state('menu', {
-      url: '/page1',
+      url: '/',
       abstract:true,
       templateUrl: 'templates/menu.html'
     })
@@ -19,7 +19,7 @@ angular.module('app.routes', [])
       
         
     .state('home', {
-      url: '/page1',
+      url: '/',
       templateUrl: 'templates/home.html',
       controller: 'homeCtrl'
     })
@@ -108,6 +108,6 @@ angular.module('app.routes', [])
     ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/page1');
+  $urlRouterProvider.otherwise('/');
 
 });
