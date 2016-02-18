@@ -18,7 +18,8 @@ var app = angular.module('app', [
   'app.waitTheOthers',
   'app.routes', 
   'app.services', 
-  'app.directives'
+  'app.directives',
+  'app.partysolo'
 ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

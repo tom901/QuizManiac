@@ -9,8 +9,8 @@ angular.module('app.routes', [])
   $stateProvider
     
       
-    .state('menu', {
-      url: '/',
+    .state('app', {
+      url: '/app',
       abstract:true,
       templateUrl: 'templates/menu.html'
     })
@@ -18,10 +18,14 @@ angular.module('app.routes', [])
     
       
         
-    .state('home', {
-      url: '/',
-      templateUrl: 'templates/home.html',
-      controller: 'homeCtrl'
+    .state('app.home', {
+      url: '/home',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/home.html',
+          controller: 'homeCtrl'
+        }
+      }
     })
         
       
@@ -30,8 +34,12 @@ angular.module('app.routes', [])
         
     .state('start', {
       url: '/page6',
-      templateUrl: 'templates/start.html',
-      controller: 'startCtrl'
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/start.html',
+          controller: 'startCtrl'
+        }
+      }  
     })
         
       
@@ -40,8 +48,14 @@ angular.module('app.routes', [])
         
     .state('newParty', {
       url: '/page16',
-      templateUrl: 'templates/newParty.html',
-      controller: 'newPartyCtrl'
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/newParty.html',
+          controller: 'newPartyCtrl'
+        }
+      }
+
+      
     })
         
       
@@ -50,8 +64,14 @@ angular.module('app.routes', [])
         
     .state('themes', {
       url: '/page8',
-      templateUrl: 'templates/themes.html',
-      controller: 'themesCtrl'
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/themes.html',
+          controller: 'themesCtrl'
+        }
+      }
+
+      
     })
         
       
@@ -60,8 +80,14 @@ angular.module('app.routes', [])
         
     .state('waitTheOthers', {
       url: '/page10',
-      templateUrl: 'templates/waitTheOthers.html',
-      controller: 'waitTheOthersCtrl'
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/waitTheOthers.html',
+          controller: 'waitTheOthersCtrl'
+        }
+      }
+
+      
     })
         
       
@@ -70,8 +96,14 @@ angular.module('app.routes', [])
         
     .state('themsSelcted', {
       url: '/page12',
-      templateUrl: 'templates/themsSelcted.html',
-      controller: 'themsSelctedCtrl'
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/themsSelcted.html',
+          controller: 'themsSelctedCtrl'
+        }
+      }
+
+      
     })
         
       
@@ -80,8 +112,14 @@ angular.module('app.routes', [])
         
     .state('quiz', {
       url: '/page13',
-      templateUrl: 'templates/quiz.html',
-      controller: 'quizCtrl'
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/quiz.html',
+          controller: 'quizCtrl'
+        }
+      }
+
+      
     })
         
       
@@ -90,24 +128,43 @@ angular.module('app.routes', [])
         
     .state('gameOver', {
       url: '/page14',
-      templateUrl: 'templates/gameOver.html',
-      controller: 'gameOverCtrl'
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/gameOver.html',
+          controller: 'gameOverCtrl'
+        }
+      }
+
+      
     })
         
       
     
       
         
-    .state('signup', {
-      url: '/page9',
-      templateUrl: 'templates/signup.html',
-      controller: 'signupCtrl'
+    .state('app.signup', {
+      url: '/signup',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/signup.html',
+          controller: 'signupCtrl'
+        }
+      }
     })
-        
+       
+    .state('app.partysolo', {
+      url: '/partysolo',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/partysolo.html',
+          controller: 'partySoloCtrl'
+        }
+      }
+    }) 
       
     ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/app/home');
 
 });
