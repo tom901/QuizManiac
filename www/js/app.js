@@ -56,3 +56,7 @@ var app = angular.module('app', [
     }
   });
 })
+.config(function($ionicConfigProvider) {
+    $ionicConfigProvider.platform.ios.navBar.alignTitle('left');
+    $ionicConfigProvider.backButton.text('').icon('ion-chevron-left').previousTitleText(false);
+  });

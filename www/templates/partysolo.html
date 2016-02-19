@@ -1,11 +1,15 @@
 <ion-view title="Quiz Maniac">
-    <ion-content overflow-scroll="true" padding="false" class="has-header">
-        <div class="hero has-mask " style="background-image: url('../img/Solo.png');">
+    <ion-content overflow-scroll="true" padding="false" class="has-header" ng-class="{expanded:$scope.isExpanded}">
+        <div class="hero has-mask slide-up game-bg" style="background-image: url('img/Solo.png');">
+			<div class="content">
+	            <div class="spacer" style="width: 100%; height: 200px;"></div>
+                <h3><a class="light"></a></h3>
+            </div>
         </div>
-        <div class="mid-bar dark-bg z1 padding">
+        <div class="mid-bar dark-bg z1 padding animate-fade-slide-in-right">
             <h3>Partie : {{quizSelected.name}}</h3>
         </div>
-        <div class="content double-padding">
+        <div class="content double-padding animate-fade-slide-in-right">
             <h4 class="positive">Description</h4>
             <p class="text-muted">
                 {{quizSelected.description}}
@@ -13,8 +17,17 @@
             <h3 class="outline padding balanced inline img-rounded">
                {{quizSelected.questions.length}} questions
            </h3>
+  			<div class="item html">
+			    <h2>0</h2>
+			    <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+			     <g>
+			      <title>Layer 1</title>
+			      <circle id="circle" class="circle_animation" r="69.85699" cy="81" cx="81" stroke-width="8" stroke="#6fdb6f" fill="none"/>
+			     </g>
+			    </svg>
+			</div>
         </div>
-        <button class="button button-fab button-fab-bottom-right button-assertive icon ion-paper-airplane waves-effect waves-button waves-light"></button>
+<!--         <button class="button button-fab button-fab-bottom-right button-assertive icon ion-paper-airplane waves-effect waves-button waves-light"></button> -->
 <!--         <script src="../../../../bower_components/js/waves.min.js"></script>
         <script src="../js/material-ionic.js"></script>
         <script>
