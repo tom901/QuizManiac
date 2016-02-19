@@ -57,6 +57,15 @@ angular.module('app.routes', [])
         }
       } 
     }) 
+    .state('app.listAllQuiz', {
+      url: '/listAllQuiz',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/listAllQuiz.html',
+          controller: 'ListAllQuizCtrl'
+        }
+      } 
+    }) 
     .state('themes', {
       url: '/page8',
       views: {

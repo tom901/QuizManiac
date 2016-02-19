@@ -1,24 +1,24 @@
-<ion-view title="QuizzManiac">
-    <ion-content overflow-scroll="true" padding="true" style="background: url(img/lb2a76NT12Q3B3PkomTA_850ccb1e4b169a36961e408640e07882_large.jpg) no-repeat center;" scroll="false" class="has-header">
-        <!-- <h3>Partie : {{party.name}}</h3>
-        <h3>Description : {{party.description}}</h3>
-        <h3>Nombre de questions : {{party.questions.length}}</h3>
+<ion-view title="Quiz Maniac">
+    <ion-content overflow-scroll="true" padding="true" style="background: url(img/lb2a76NT12Q3B3PkomTA_850ccb1e4b169a36961e408640e07882_large.jpg) no-repeat center;" scroll="true" class="has-header">
+        <h3>Partie : {{game.name}}</h3>
+        <h3>Description : {{game.description}}</h3>
+        <h3>Nombre de questions : {{game.questions.length}}</h3>
         
 
         <div class="list">
-	    	<div ng-repeat="test in party.questions">
+	    	<div ng-repeat="question in quizSelected.questions">
 			  
 			  <div  class="item item-divider">
-			    {{test.name}}
+			    {{question.name}}
 			  </div>
 
-			  <a ng-repeat="test2 in test.answers" class="item" href="#">
-			    {{test2.name}}
+			  <a ng-repeat="anwser in question.answers" class="item" href="#">
+			    {{anwser.name}}
 			  </a>
 
 		  </div>
-		</div> -->
-		<div class="spacer" style="width: 282.986px; height: 800px;"></div>
+		</div>
+		<!-- <div class="spacer" style="width: 282.986px; height: 800px;"></div>
 		<ion-view>
 		  <ion-slide-box>
 		    <ion-slide>
@@ -32,7 +32,7 @@
 		      </div>
 		    </ion-slide>
 		  </ion-slide-box>
-		</ion-view>
+		</ion-view> -->
 
     </ion-content>
 </ion-view>

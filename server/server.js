@@ -108,6 +108,7 @@ app.get('/getAllGamesNotStarted', function(req,res){
     res.send(listGameNotStarted);
 });
 
+//LUNCH THE SERVER 
 app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

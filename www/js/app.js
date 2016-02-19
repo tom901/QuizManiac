@@ -22,7 +22,9 @@ var app = angular.module('app', [
   'app.services', 
   'app.directives',
   'app.partysolo',
+  'app.listAllQuiz',
   'app.userService',
+  'app.quizService',
   'app.gameService'
 ])
 .constant('URL_SERVER','http://localhost:9000')

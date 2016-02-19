@@ -1,6 +1,6 @@
 {
     "type": "quiz",
-    "name": "QuizSimpsons",
+    "name": "The Simpsons",
     "description": "Do you know the simpsons?",
     "questions": [
         {

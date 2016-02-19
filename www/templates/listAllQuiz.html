@@ -1,0 +1,16 @@
+<ion-view title="Liste des Quiz">
+    <ion-content overflow-scroll="true" padding="true" style="background: url(img/lb2a76NT12Q3B3PkomTA_850ccb1e4b169a36961e408640e07882_large.jpg) no-repeat center;" scroll="false" class="has-header">
+        <div>
+           
+
+            <p>Défier vous même en répondant correctement au maximum de questions.</p>
+             <p>
+                <strong>Quel quiz voulez vous faire ?</strong>
+            </p>
+        </div>
+        <div class="spacer" style="width: 282.986px; height: 21.9931px;"></div>
+        <div ng-repeat="quiz in listQuiz">
+            <a ui-sref="app.partysolo" ng-click="setCurrentQuiz(quiz)"  class="button button-dark button-block ">{{quiz.name}}</a>
+        </div>
+    </ion-content>
+</ion-view>

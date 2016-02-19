@@ -1,6 +1,6 @@
 {
     "type": "quiz",
-    "name": "QuizDisney",
+    "name": "Disney",
     "description": "Connaissez-vous bien les personnages de disney ?",
     "questions": [
         {
