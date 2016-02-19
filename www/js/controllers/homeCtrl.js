@@ -18,5 +18,5 @@ angular.module('app.home', [])
 		}
 		
 	}
-	$rootScope.toggleSound();
+	// $rootScope.toggleSound();
 });

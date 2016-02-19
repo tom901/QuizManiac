@@ -2,12 +2,14 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var cors = require('cors');
 var app = express();
 var usersList = [];
 var gamesList = [];
 
 app.set('port', process.env.PORT || 9000);
 // app.use(express.favicon());
+app.use(cors());
 app.use(express.bodyParser());
 //to load the index.html
 app.use('/', express.static(path.join(__dirname, 'app')));
@@ -19,45 +21,65 @@ app.use(bodyParser.urlencoded({extended: true}));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+app.get('/getAllQuiz',function(req,res){
+    var quizListGlobal = [];
+
+    fs.readFile('quizSimpsons.json', function(err, data) {
+        quizListGlobal.push(JSON.parse(data));
+        fs.readFile('quizDisney.json', function(err, data2) {
+            quizListGlobal.push(JSON.parse(data2));
+            res.setHeader('Cache-Control', 'no-cache');
+            res.send(quizListGlobal);
+        });
+    });
+    
+    
+});
+
 app.get('/getQuizSimpsons', function(req, res) {
     fs.readFile('quizSimpsons.json', function(err, data) {
         res.setHeader('Cache-Control', 'no-cache');
-        // var dataJson = JSON.parse(data);
-        // console.log('dataJson');
-        // console.log(dataJson);
-        // var quiz = new Quiz(dataJson.name);
-        // for(var i = 0; i < dataJson.questions.length ;i ++){
-        //     quiz.questions[i] = new Question(dataJson.questions[i].name);
-        //    for(var j = 0; j < dataJson.questions[i].answers.length ;j ++){
-        //         quiz.questions[i].answers.push(new Answer(dataJson.questions[i].answers[j].name,dataJson.questions[i].answers[j].weight ));
-        //    }
-        // }
-        // console.log('quiz');
-        // console.log(quiz);
+        res.json(JSON.parse(data));
+    });
+});
+app.get('/getQuizDisney', function(req, res) {
+    fs.readFile('quizDisney.json', function(err, data) {
+        res.setHeader('Cache-Control', 'no-cache');
         res.json(JSON.parse(data));
     });
 });
 //GET ALL ROUTE 
 app.get('/', function(req,res){
     var routesList = [];
+    routesList.push('Les différentes routes disponibles de l\'api');
     routesList.push('/getAllRoutes');
     routesList.push('/createUser/:nameUser');
     routesList.push('/createGame/:nameUser/:nameGame/:numberPlayer');
     routesList.push('/joinUserInGame/:nameUser/:nameGame');
     routesList.push('/getQuizSimpsons');
+    routesList.push('/getQuizDisney');
+    routesList.push('/getAllQuiz');
+    routesList.push('/getAllUsers');
+    routesList.push('/getAllGames');
     res.send(routesList);
 });
 
 // USER AREA
 //route pour créer un utilisateur et le rajouter dans le tableau des users
 app.get('/createUser/:nameUser', function(req,res){
-      var user = new User(req.params.nameUser);
-      usersList.push(user);
-      res.send(user);
+  var user = new User(req.params.nameUser);
+  console.log('user');
+  console.log(user);
+  usersList.push(user);
+  res.send(user);
 });
 // Route pour récuperer tous les utilisateurs
 app.get('/getAllUsers', function(req,res){
-      res.send(usersList);
+  res.send(usersList);
+});
+// Route pour récuperer toutes les parties
+app.get('/getAllGames', function(req,res){
+  res.send(gamesList);
 });
 // GAME AREA
 // Route pour créer un nouveau game
