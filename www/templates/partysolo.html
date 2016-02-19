@@ -1,6 +1,38 @@
 <ion-view title="QuizzManiac">
     <ion-content overflow-scroll="true" padding="true" style="background: url(img/lb2a76NT12Q3B3PkomTA_850ccb1e4b169a36961e408640e07882_large.jpg) no-repeat center;" scroll="false" class="has-header">
-        <h3>Hello world !</h3>
+        <!-- <h3>Partie : {{party.name}}</h3>
+        <h3>Description : {{party.description}}</h3>
+        <h3>Nombre de questions : {{party.questions.length}}</h3>
         
+
+        <div class="list">
+	    	<div ng-repeat="test in party.questions">
+			  
+			  <div  class="item item-divider">
+			    {{test.name}}
+			  </div>
+
+			  <a ng-repeat="test2 in test.answers" class="item" href="#">
+			    {{test2.name}}
+			  </a>
+
+		  </div>
+		</div> -->
+		<div class="spacer" style="width: 282.986px; height: 800px;"></div>
+		<ion-view>
+		  <ion-slide-box>
+		    <ion-slide>
+		      <div >
+		        <button ng-click="nextSlide()">Next slide!</button>
+		      </div>
+		    </ion-slide>
+		    <ion-slide>
+		      <div class="box red">
+		        Slide 2!
+		      </div>
+		    </ion-slide>
+		  </ion-slide-box>
+		</ion-view>
+
     </ion-content>
 </ion-view>
