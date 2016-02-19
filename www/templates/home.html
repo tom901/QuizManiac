@@ -1,17 +1,36 @@
 <ion-view title="QuizzManiac">
-    <ion-content overflow-scroll="true" padding="true" style="background: url(img/lb2a76NT12Q3B3PkomTA_850ccb1e4b169a36961e408640e07882_large.jpg) no-repeat center;" scroll="false" class="has-header">
-        <h3>Bienvenue sur QuizzManiac !</h3>
-        <div class="spacer" style="width: 282.986px; height: 34.9826px;"></div>
-        <div>
-            <p>
-                <strong>QuizManiac est un Quizz intéractif !</strong>
-            </p>
-
-            <p>Défier vos opposants en répondant le plus rapidement possible.</p>
+    <ion-content overflow-scroll="true" padding="false" ng-class="{expanded:$scope.isExpanded}" class="has-header">
+        <div class="hero slide-up game-bg" style="background-image: url('img/Quizz-Maniac.png');">
+            <div class="content">
+            <div class="spacer" style="width: 100%; height: 200px;"></div>
+                <h3><a class="light"></a></h3>
+            </div>
         </div>
-        <div class="spacer" style="width: 282.986px; height: 21.9931px;"></div>
-        <a ui-sref="app.signup" class="button button-dark button-block ">Partie en ligne</a>
-        <a ui-sref="app.listAllQuiz" class="button button-dark button-block ">Partie solo</a>
+            
+        <h3 class="text-center content padding double-padding-x">Bienvenue sur QuizzManiac !</h3>
+        
+        <div class="padding">
+            <h4>
+                <strong>QuizManiac est un Quizz intéractif !</strong>
+            </h4>
 
+            <p>Défier vos opposants en répondant le plus rapidement possible  au question !</p>
+        </div>
+        <div class="padding">
+            <div class="list animate-fade-slide-in-right">
+                <a ui-sref="app.signup" class="item item-avatar item-icon-right">
+                    <img src="img/networking-icon.png">
+                    <h2>Partie en ligne</h2>
+                    <p>Jouez contre des adversaires</p>
+                    <i class="icon ion-chevron-right muted"></i>
+                </a>
+                <a ui-sref="app.listAllQuiz" class="item item-avatar item-icon-right">
+                    <img src="img/contact-icon.png">
+                    <h2>Partie solo</h2>
+                    <p>Répondez rapidement aux questions !</p>
+                    <i class="icon ion-chevron-right muted"></i>
+                </a>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

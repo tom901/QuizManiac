@@ -8,7 +8,8 @@
 // var URL_LOCAL_SERVER = 'http://192.168.137.1:9000';
 var URL_LOCAL_SERVER = 'http://localhost:9000';
 var app = angular.module('app', [
-  'ionic', 
+  'ionic',
+  'ionic-material',
   'app.home', 
   'app.gameover',
   'app.quizz',

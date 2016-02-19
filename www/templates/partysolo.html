@@ -1,38 +1,37 @@
 <ion-view title="Quiz Maniac">
-    <ion-content overflow-scroll="true" padding="true" style="background: url(img/lb2a76NT12Q3B3PkomTA_850ccb1e4b169a36961e408640e07882_large.jpg) no-repeat center;" scroll="true" class="has-header">
-        <h6>Partie : {{quizSelected.name}}</h6>
-        <h6>Description : {{quizSelected.description}}</h6>
-        <h6>Nombre de questions : {{quizSelected.questions.length}}</h6>
-        
-
+    <ion-content overflow-scroll="true" padding="false" class="has-header">
+        <div class="hero has-mask " style="background-image: url('../img/Solo.png');">
+        </div>
+        <div class="mid-bar dark-bg z1 padding">
+            <h3>Partie : {{quizSelected.name}}</h3>
+        </div>
+        <div class="content double-padding">
+            <h4 class="positive">Description</h4>
+            <p class="text-muted">
+                {{quizSelected.description}}
+            </p>
+            <h3 class="outline padding balanced inline img-rounded">
+               {{quizSelected.questions.length}} questions
+           </h3>
+        </div>
+        <button class="button button-fab button-fab-bottom-right button-assertive icon ion-paper-airplane waves-effect waves-button waves-light"></button>
+<!--         <script src="../../../../bower_components/js/waves.min.js"></script>
+        <script src="../js/material-ionic.js"></script>
+        <script>
+        Waves.displayEffect();
+        setTimeout(function() {
+            Mi.motion.slideUp('.slide-up');
+        }, 0);
+        </script> -->
         <div class="list">
-	    	<div ng-repeat="question in quizSelected.questions">
-			  
-			  <div  class="item item-divider">
-			    {{question.name}}
-			  </div>
-
-			  <a ng-repeat="anwser in question.answers" class="item" href="#">
-			    {{anwser.name}}
-			  </a>
-
-		  </div>
-		</div>
-		<!-- <div class="spacer" style="width: 282.986px; height: 800px;"></div>
-		<ion-view>
-		  <ion-slide-box>
-		    <ion-slide>
-		      <div >
-		        <button ng-click="nextSlide()">Next slide!</button>
-		      </div>
-		    </ion-slide>
-		    <ion-slide>
-		      <div class="box red">
-		        Slide 2!
-		      </div>
-		    </ion-slide>
-		  </ion-slide-box>
-		</ion-view> -->
-
+            <div ng-repeat="question in quizSelected.questions">
+                <div  class="item item-divider">
+                    {{question.name}}
+                </div>
+                <a ng-repeat="anwser in question.answers" class="item" href="#">
+                    {{anwser.name}}
+                </a>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
