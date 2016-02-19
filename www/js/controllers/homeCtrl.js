@@ -1,7 +1,5 @@
 angular.module('app.home', [])
-.controller('homeCtrl', function($scope, $rootScope) {
-
-	
+.controller('homeCtrl', function($scope, $rootScope, URL_SERVER) {
 
 	$rootScope.toggleSound = function(){
 		$rootScope.audio = ($rootScope.audio == null)? new Audio("audio/TetrisStage.mp3") : $rootScope.audio;

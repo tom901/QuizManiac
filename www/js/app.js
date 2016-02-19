@@ -5,6 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+// var URL_LOCAL_SERVER = 'http://192.168.137.1:9000';
 var URL_LOCAL_SERVER = 'http://localhost:9000';
 var app = angular.module('app', [
   'ionic', 
@@ -27,18 +28,24 @@ var app = angular.module('app', [
   'app.userService',
   'app.quizService',
   'app.gameService'
-])
+  ])
 .constant('URL_SERVER',URL_LOCAL_SERVER)
-.run(function($ionicPlatform) {
 
+.run(function($ionicPlatform) {
+  var deviceInformation = ionic.Platform.device();
+  var isWebView = ionic.Platform.isWebView();
+  var isIPad = ionic.Platform.isIPad();
+  var isIOS = ionic.Platform.isIOS();
   var isAndroid = ionic.Platform.isAndroid();
-  if(isAndroid){
-    URL_LOCAL_SERVER = 'http://192.168.137.1:9000';
-  }
+  var isWindowsPhone = ionic.Platform.isWindowsPhone();
+  var isAndroid = ionic.Platform.isAndroid();
+
+  
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
