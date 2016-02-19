@@ -8,19 +8,24 @@
 var app = angular.module('app', [
   'ionic', 
   'app.home', 
-  'app.party',
   'app.gameover',
   'app.quizz',
   'app.signup',
   'app.start',
   'app.themes',
+  'app.newGame',
   'app.themeSelected',
   'app.waitTheOthers',
+  'app.newOrJoinGame',
+  'app.joinGame',
   'app.routes', 
   'app.services', 
   'app.directives',
-  'app.partysolo'
+  'app.partysolo',
+  'app.userService',
+  'app.gameService'
 ])
+.constant('URL_SERVER','http://localhost:9000')
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

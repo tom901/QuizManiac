@@ -7,17 +7,11 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
-      
     .state('app', {
       url: '/app',
       abstract:true,
       templateUrl: 'templates/menu.html'
     })
-      
-    
-      
-        
     .state('app.home', {
       url: '/home',
       views: {
@@ -27,11 +21,6 @@ angular.module('app.routes', [])
         }
       }
     })
-        
-      
-    
-      
-        
     .state('start', {
       url: '/page6',
       views: {
@@ -41,27 +30,33 @@ angular.module('app.routes', [])
         }
       }  
     })
-        
-      
-    
-      
-        
-    .state('newParty', {
-      url: '/page16',
+    .state('app.newGame', {
+      url: '/newGame',
       views: {
         'side-menu': {
-          templateUrl: 'templates/newParty.html',
-          controller: 'newPartyCtrl'
+          templateUrl: 'templates/newGame.html',
+          controller: 'NewGameCtrl'
         }
-      }
-
-      
-    })
-        
-      
-    
-      
-        
+      } 
+    }) 
+    .state('app.joinGame', {
+      url: '/joinGame',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/joinGame.html',
+          controller: 'JoinGameCtrl'
+        }
+      } 
+    }) 
+    .state('app.newOrJoinGame', {
+      url: '/newOrJoinGame',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/newOrJoinGame.html',
+          controller: 'NewOrJoinGameCtrl'
+        }
+      } 
+    }) 
     .state('themes', {
       url: '/page8',
       views: {
@@ -70,30 +65,16 @@ angular.module('app.routes', [])
           controller: 'themesCtrl'
         }
       }
-
-      
     })
-        
-      
-    
-      
-        
-    .state('waitTheOthers', {
-      url: '/page10',
+    .state('app.waitTheOthers', {
+      url: '/waitTheOthers',
       views: {
         'side-menu': {
           templateUrl: 'templates/waitTheOthers.html',
           controller: 'waitTheOthersCtrl'
         }
       }
-
-      
     })
-        
-      
-    
-      
-        
     .state('themsSelcted', {
       url: '/page12',
       views: {
@@ -102,14 +83,7 @@ angular.module('app.routes', [])
           controller: 'themsSelctedCtrl'
         }
       }
-
-      
-    })
-        
-      
-    
-      
-        
+    })  
     .state('quiz', {
       url: '/page13',
       views: {
@@ -118,14 +92,7 @@ angular.module('app.routes', [])
           controller: 'quizCtrl'
         }
       }
-
-      
     })
-        
-      
-    
-      
-        
     .state('gameOver', {
       url: '/page14',
       views: {
@@ -134,14 +101,7 @@ angular.module('app.routes', [])
           controller: 'gameOverCtrl'
         }
       }
-
-      
     })
-        
-      
-    
-      
-        
     .state('app.signup', {
       url: '/signup',
       views: {
@@ -151,7 +111,6 @@ angular.module('app.routes', [])
         }
       }
     })
-       
     .state('app.partysolo', {
       url: '/partysolo',
       views: {
@@ -160,11 +119,7 @@ angular.module('app.routes', [])
           controller: 'partySoloCtrl'
         }
       }
-    }) 
-      
-    ;
-
+    });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
-
 });

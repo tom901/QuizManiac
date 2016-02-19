@@ -5,13 +5,14 @@
             <ion-list>
                 <label class="item item-input item-Override">
                     <span class="input-label input-label-Override">Pseudo :</span>
-                    <input type="text" placeholder="">
+                    <input type="text" ng-model="userInput.userName" placeholder="">
                 </label>
             </ion-list>
-            <a ui-sref="start" class="button button-dark button-block ">Valider</a>
+            <a ui-sref="app.newOrJoinGame" class="button button-dark button-block" ng-click="submitLogin()">Valider</a>
         </form>
         <button class="button button-positive button-block icon-left {{audioIcon}}" ng-click="toggleSound()">
           {{audioTexte}}
         </button>
+        {{user}}
     </ion-content>
 </ion-view>

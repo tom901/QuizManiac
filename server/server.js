@@ -35,7 +35,6 @@ app.get('/getAllQuiz',function(req,res){
     
     
 });
-
 app.get('/getQuizSimpsons', function(req, res) {
     fs.readFile('quizSimpsons.json', function(err, data) {
         res.setHeader('Cache-Control', 'no-cache');
@@ -68,8 +67,6 @@ app.get('/', function(req,res){
 //route pour créer un utilisateur et le rajouter dans le tableau des users
 app.get('/createUser/:nameUser', function(req,res){
   var user = new User(req.params.nameUser);
-  console.log('user');
-  console.log(user);
   usersList.push(user);
   res.send(user);
 });
@@ -77,23 +74,38 @@ app.get('/createUser/:nameUser', function(req,res){
 app.get('/getAllUsers', function(req,res){
   res.send(usersList);
 });
-// Route pour récuperer toutes les parties
-app.get('/getAllGames', function(req,res){
-  res.send(gamesList);
-});
+
 // GAME AREA
 // Route pour créer un nouveau game
 app.get('/createGame/:nameUser/:nameGame/:numberPlayer', function(req,res){
     game = new Game(req.params.nameGame, req.params.numberPlayer);
-    game.usersInGame.push(findUser(req.params.nameUser));
+    game.usersInGame.push(findUserById(req.params.nameUser));
     gamesList.push(game);
     res.send(game);
 });
 // Route pour joindre un utilisateur dans une partie 
-app.get('/joinUserInGame/:nameUser/:nameGame', function(req,res){
-    game = findGame(req.params.nameGame);
-    game.usersInGame.push(findUser(req.params.nameUser));
+app.get('/joinUserInGame/:idUser/:idGame', function(req,res){
+    game = findGameById(req.params.idGame);
+    game.usersInGame.push(findUserById(req.params.idUser));
+    //Si le nombre de participant et egale au nombre de joeurs prevu dans la partie alors on change le status du jeu a 0 et la partie commence
+    if(game.usersInGame.length == game.numberPlayer){
+        game.stateGame = 0;
+    }
     res.send(game);
+});
+// Route pour récuperer toutes les parties
+app.get('/getAllGames', function(req,res){
+    res.send(gamesList);
+});
+// Route pour récuperer toutes les parties
+app.get('/getAllGamesNotStarted', function(req,res){
+    var listGameNotStarted = [];
+    for(var i = 0; i < gamesList.length ; i++){
+        if(gamesList[i].stateGame == 1){
+            listGameNotStarted.push(gamesList[i]);
+        }
+    }
+    res.send(listGameNotStarted);
 });
 
 app.listen(app.get('port'), function(){
@@ -125,8 +137,9 @@ function Answer(answer, weight){
     this.answer = answer;
     this.weight = weight;
 }
-//FUNCTION UTIL
-function findUser(nameUser){
+//                  FUNCTION UTIL                   //
+
+function findUserByName(nameUser){
     for(var i = 0 ; i < usersList.length ; i++){
         if(usersList[i].name === nameUser){
             return usersList[i];
@@ -134,13 +147,28 @@ function findUser(nameUser){
     }
     return null;
 }
-function findGame(nameGame){
+function findUserById(idUser){
+    for(var i = 0 ; i < usersList.length ; i++){
+        if(usersList[i].id === idUser){
+            return usersList[i];
+        }
+    }
+    return null;
+}
+function findGameByName(nameGame){
     for(var i = 0 ; i < gamesList.length ; i++){
         if(gamesList[i].name === nameGame){
             return gamesList[i];
         }
     }
-    console.log('findGame aucun user trouvé')
+    return null;
+}
+function findGameById(idGame){
+    for(var i = 0 ; i < gamesList.length ; i++){
+        if(gamesList[i].id === idGame){
+            return gamesList[i];
+        }
+    }
     return null;
 }
 
