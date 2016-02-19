@@ -5,6 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+var URL_LOCAL_SERVER = 'http://localhost:9000';
 var app = angular.module('app', [
   'ionic', 
   'app.home', 
@@ -27,8 +28,14 @@ var app = angular.module('app', [
   'app.quizService',
   'app.gameService'
 ])
-.constant('URL_SERVER','http://localhost:9000')
+.constant('URL_SERVER',URL_LOCAL_SERVER)
 .run(function($ionicPlatform) {
+
+  var isAndroid = ionic.Platform.isAndroid();
+  if(isAndroid){
+    URL_LOCAL_SERVER = 'http://192.168.137.1:9000';
+  }
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
