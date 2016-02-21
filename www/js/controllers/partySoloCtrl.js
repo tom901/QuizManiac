@@ -1,6 +1,6 @@
 angular.module('app.partysolo', [])
 
-.controller('PartySoloCtrl', function($scope, $rootScope, $http, $ionicSlideBoxDelegate, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+.controller('PartySoloCtrl', function($scope, $rootScope, $state, $http, $ionicSlideBoxDelegate, $timeout, ionicMaterialMotion, ionicMaterialInk) {
 	console.log('$rootScope.quizSelected');
 	console.log($rootScope.quizSelected);
     $scope.countdownTxt = 10;
