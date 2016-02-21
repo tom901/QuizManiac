@@ -9,6 +9,7 @@
 var URL_LOCAL_SERVER = 'http://localhost:9000';
 var app = angular.module('app', [
   'ionic',
+  'ngCordova',
   'ionic-material',
   'app.home', 
   'app.gameover',
