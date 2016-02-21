@@ -6,6 +6,19 @@
         
 
         <div class="list">
+	    	<!-- <div ng-repeat="question in quizSelected.questions"> -->
+			  
+			  <div  class="item item-divider">
+			    {{quizSelected.questions[countQuestion].name}}
+			  </div>
+
+			  <a ng-repeat="anwser in quizSelected.questions[countQuestion].answers" class="item" ng-click="nextQuestion(anwser)" href="#">
+			  {{anwser.name}}
+			  </a>
+
+		  <!-- </div> -->
+		</div>
+		<!-- <div class="list">
 	    	<div ng-repeat="question in quizSelected.questions">
 			  
 			  <div  class="item item-divider">
@@ -17,7 +30,7 @@
 			  </a>
 
 		  </div>
-		</div>
+		</div> -->
 		<!-- <div class="spacer" style="width: 282.986px; height: 800px;"></div>
 		<ion-view>
 		  <ion-slide-box>

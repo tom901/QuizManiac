@@ -125,7 +125,7 @@ angular.module('app.routes', [])
       views: {
         'side-menu': {
           templateUrl: 'templates/partysolo.html',
-          controller: 'partySoloCtrl'
+          controller: 'PartySoloCtrl'
         }
       }
     });

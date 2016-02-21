@@ -86,6 +86,27 @@
                     "weight": 0
                 }
             ]
+        },
+         {
+            "name": "Quel est le nom du père de Bart ?",
+            "answers": [
+                {
+                    "name": "Jacques",
+                    "weight": 0
+                },
+                {
+                    "name": "Homer",
+                    "weight": 1
+                },
+                {
+                    "name": "Pierre",
+                    "weight": 0
+                },
+                {
+                    "name": "Paul",
+                    "weight": 0
+                }
+            ]
         }
         
     ]
