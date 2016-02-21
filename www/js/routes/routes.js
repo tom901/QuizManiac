@@ -121,6 +121,15 @@ angular.module('app.routes', [])
         }
       }
     })
+    .state('app.gameOnline', {
+      url: '/gameOnline',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/gameOnline.html',
+          controller: 'GameOnlineCtrl'
+        }
+      }
+    })
     .state('app.partysolo', {
       url: '/partysolo',
       views: {
