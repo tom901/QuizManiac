@@ -1,16 +1,24 @@
 <ion-view title="Liste des Quiz">
-    <ion-content overflow-scroll="true" padding="true" style="background: url(img/lb2a76NT12Q3B3PkomTA_850ccb1e4b169a36961e408640e07882_large.jpg) no-repeat center;" scroll="false" class="has-header">
-        <div>
-           
+    <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in">
+        <div class="list card animated fadeIn">
+            <div class="item item-body">
+                <h3>
+                    Défiez vous même en répondant correctement au maximum de questions.
+                </h3>
+                <h2>
+                    <strong>Quel quiz voulez vous faire ?</strong>
+                </h2>
+            </div>
 
-            <p>Défier vous même en répondant correctement au maximum de questions.</p>
-             <p>
-                <strong>Quel quiz voulez vous faire ?</strong>
-            </p>
         </div>
-        <div class="spacer" style="width: 282.986px; height: 21.9931px;"></div>
-        <div ng-repeat="quiz in listQuiz">
-            <a ui-sref="app.partysolo" ng-click="setCurrentQuiz(quiz)"  class="button button-dark button-block ">{{quiz.name}}</a>
+        <div class="padding row game-bg">
+            <div ui-sref="app.partysolo" ng-repeat="quiz in listQuiz" class="col col-50" ng-click="setCurrentQuiz(quiz)">
+                <div class="ink card">
+                    <h4 class="padding-left padding-right">{{quiz.name}}</h4>
+                    <img class="full-image" src="img/lightbulb-quiz.png">
+                    <p class="padding-left padding-right padding-top">{{quiz.questions.length}} Questions</p>
+                </div>
+            </div>
         </div>
     </ion-content>
 </ion-view>

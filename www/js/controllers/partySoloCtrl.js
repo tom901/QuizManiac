@@ -14,12 +14,12 @@ angular.module('app.partysolo', [])
     //         if (i == time) {
     //             clearInterval(interval);
     //         }
-    //         i++;  
+    //         i++;
     //     }, 1000);
     // }
     // $scope.countdown();
 	$scope.party = "";
-	
+
 
 	//compteur pour faire défiler les questions lors de chaque réponse
 	$scope.countQuestion  = 0;
@@ -67,12 +67,17 @@ angular.module('app.partysolo', [])
             startVelocity: 3000
         });
     }, 700);
+	$timeout(function() {
+		angular.element(document.querySelector('#hero-has-mask')).addClass("heroUp");
+		angular.element(document.querySelector('#nb-question-id')).addClass("hideUpElement");
+	}, 4000);
+	$timeout(function() {
+		angular.element(document.querySelector('#answerArea')).addClass("visibleUpElement");
+	}, 5000);
 
     // Set Ink
     ionicMaterialInk.displayEffect();
-	
+
   	Waves.displayEffect();
 
 })
-
-

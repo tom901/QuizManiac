@@ -3457,3 +3457,18 @@
 .delay-900ms {
     animation-delay: 900ms;
 }
+.delay-1s {
+    animation-delay: 1s;
+}
+.delay-2s {
+    animation-delay: 2s;
+}
+.delay-3s {
+    animation-delay: 3s;
+}
+.delay-4s {
+    animation-delay: 4s;
+}
+.delay-5s {
+    animation-delay: 5s;
+}

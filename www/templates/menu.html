@@ -1,13 +1,13 @@
 <ion-side-menus enable-menu-with-back-views="false">
     <ion-side-menu-content>
-        
+
         <ion-nav-bar class="bar-positive">
-            <ion-nav-back-button></ion-nav-back-button>
+            <!-- <ion-nav-back-button></ion-nav-back-button> -->
             <ion-nav-buttons side="left">
                 <button class="button button-clear button-dark button-icon ion-navicon" menu-toggle=""></button>
             </ion-nav-buttons>
             <ion-nav-buttons side="right">
-                
+
                 <button class="button button-clear button-positiveicon-right {{audioIcon}}" ng-click="toggleSound()">
                   {{audioTexte}}
                 </button>
@@ -26,9 +26,7 @@
 
         <ion-content padding="false" class="side-menu-left has-header">
             <ion-list>
-                <a ui-sref="app.home" menu-close>
-                    <ion-item menu-close>Accueil</ion-item>
-                </a>
+                <ion-item ui-sref="app.home" menu-close>Accueil</ion-item>
                 <ion-item menu-close>Paramètres</ion-item>
                 <ion-item menu-close>Comment jouer</ion-item>
                 <ion-item menu-close>A propos</ion-item>

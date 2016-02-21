@@ -11,7 +11,8 @@ var app = angular.module('app', [
   'ionic',
   'ngCordova',
   'ionic-material',
-  'app.home', 
+  'app.home',
+  'app.menu', 
   'app.gameover',
   'app.quizz',
   'app.signup',
@@ -22,8 +23,8 @@ var app = angular.module('app', [
   'app.waitTheOthers',
   'app.newOrJoinGame',
   'app.joinGame',
-  'app.routes', 
-  'app.services', 
+  'app.routes',
+  'app.services',
   'app.directives',
   'app.partysolo',
   'app.listAllQuiz',
@@ -42,7 +43,7 @@ var app = angular.module('app', [
   var isWindowsPhone = ionic.Platform.isWindowsPhone();
   var isAndroid = ionic.Platform.isAndroid();
 
-  
+
 
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

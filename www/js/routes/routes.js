@@ -10,7 +10,8 @@ angular.module('app.routes', [])
     .state('app', {
       url: '/app',
       abstract:true,
-      templateUrl: 'templates/menu.html'
+      templateUrl: 'templates/menu.html',
+      controller: 'MenuCtrl'
     })
     .state('app.home', {
       url: '/home',
@@ -28,7 +29,7 @@ angular.module('app.routes', [])
           templateUrl: 'templates/start.html',
           controller: 'startCtrl'
         }
-      }  
+      }
     })
     .state('app.newGame', {
       url: '/newGame',
@@ -37,8 +38,8 @@ angular.module('app.routes', [])
           templateUrl: 'templates/newGame.html',
           controller: 'NewGameCtrl'
         }
-      } 
-    }) 
+      }
+    })
     .state('app.joinGame', {
       url: '/joinGame',
       views: {
@@ -46,8 +47,8 @@ angular.module('app.routes', [])
           templateUrl: 'templates/joinGame.html',
           controller: 'JoinGameCtrl'
         }
-      } 
-    }) 
+      }
+    })
     .state('app.newOrJoinGame', {
       url: '/newOrJoinGame',
       views: {
@@ -55,8 +56,8 @@ angular.module('app.routes', [])
           templateUrl: 'templates/newOrJoinGame.html',
           controller: 'NewOrJoinGameCtrl'
         }
-      } 
-    }) 
+      }
+    })
     .state('app.listAllQuiz', {
       url: '/listAllQuiz',
       views: {
@@ -64,8 +65,8 @@ angular.module('app.routes', [])
           templateUrl: 'templates/listAllQuiz.html',
           controller: 'ListAllQuizCtrl'
         }
-      } 
-    }) 
+      }
+    })
     .state('themes', {
       url: '/page8',
       views: {
@@ -92,7 +93,7 @@ angular.module('app.routes', [])
           controller: 'themsSelctedCtrl'
         }
       }
-    })  
+    })
     .state('quiz', {
       url: '/page13',
       views: {

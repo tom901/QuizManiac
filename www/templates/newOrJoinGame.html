@@ -1,15 +1,33 @@
-<ion-view title="QuizzManiac">
-    <ion-content overflow-scroll="true" padding="true" style="background: url(img/lb2a76NT12Q3B3PkomTA_850ccb1e4b169a36961e408640e07882_large.jpg) no-repeat center;" scroll="false" class="has-header">
-        <div>
-           
-
-            <p>Défier vos opposants en répondant le plus rapidement possible.</p>
-             <p>
-                <strong>Que voulez vous faire ?</strong>
-            </p>
+<ion-view title="Connexion" class="">
+    <ion-content overflow-scroll="true" padding="false" ng-class="{expanded:$scope.isExpanded}" class="has-header">
+        <div class="hero slide-up game-bg" style="background-image: url('img/Quizz-Maniac.png');background-position: center; ">
+            <div class="content">
+            <div class="spacer" style="width: 100%; height: 200px;"></div>
+                <h3><a class="light"></a></h3>
+            </div>
         </div>
-        <div class="spacer" style="width: 282.986px; height: 21.9931px;"></div>
-        <a ui-sref="app.newGame" class="button button-dark button-block ">Créer une nouvelle partie</a>
-        <a ui-sref="app.joinGame" class="button button-dark button-block ">Rejoindre une partie</a>
+
+        <div class="padding">
+            <h4>
+                <strong>Que voulez vous faire ?</strong>
+            </h4>
+            <p>Ici, défiez vos opposants en répondant le plus rapidement possible  au question !</p>
+        </div>
+        <div class="padding">
+            <div class="list animate-fade-slide-in-right">
+                <a ui-sref="app.newGame" class="item item-avatar item-icon-right">
+                    <img src="img/networking-icon.png">
+                    <h2>Créer une nouvelle partie</h2>
+                    <p>Une partie de ta création</p>
+                    <i class="icon ion-chevron-right muted"></i>
+                </a>
+                <a ui-sref="app.joinGame" class="item item-avatar item-icon-right">
+                    <img src="img/networking-icon.png">
+                    <h2>Rejoindre une partie</h2>
+                    <p>Jouez contre des inconnus !</p>
+                    <i class="icon ion-chevron-right muted"></i>
+                </a>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
