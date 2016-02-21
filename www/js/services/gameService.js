@@ -12,6 +12,18 @@ angular.module('app.gameService', [])
             return data.data;
         });
     },
+    getGameByName : function(nameGame){
+        return $http.get(URL_SERVER+'/getGameByName/'+nameGame).then(function(data) {
+            $rootScope.game = data.data;
+            return data.data;
+
+        //   if(callback){
+        //     callback(data.data);
+        // }else{
+        //     return data.data;
+        // }
+    });
+    },
     getAllGames : function(callback){
         return $http.get(URL_SERVER+'/getAllGamesNotStarted').then(function(data) {
           if(callback){
