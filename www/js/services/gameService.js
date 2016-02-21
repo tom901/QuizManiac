@@ -16,12 +16,6 @@ angular.module('app.gameService', [])
         return $http.get(URL_SERVER+'/getGameByName/'+nameGame).then(function(data) {
             $rootScope.game = data.data;
             return data.data;
-
-        //   if(callback){
-        //     callback(data.data);
-        // }else{
-        //     return data.data;
-        // }
     });
     },
     getAllGames : function(callback){
@@ -31,7 +25,6 @@ angular.module('app.gameService', [])
         }else{
             return data.data;
         }
-
     });
     },
     setPlayerInGame : function(userId, gameId){

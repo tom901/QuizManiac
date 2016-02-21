@@ -26,6 +26,7 @@ var app = angular.module('app', [
   'app.services', 
   'app.directives',
   'app.partysolo',
+  'app.gameOnline',
   'app.listAllQuiz',
   'app.userService',
   'app.quizService',

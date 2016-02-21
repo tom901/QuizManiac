@@ -44,6 +44,7 @@ app.get('/', function(req,res){
     res.send(routesList);
 });
 
+//  QUIZ AREA
 app.get('/getAllQuiz',function(req,res){
     res.setHeader('Cache-Control', 'no-cache');
     res.send(getAllQuiz());
@@ -56,6 +57,17 @@ app.get('/getQuizDisney', function(req, res) {
 
     res.setHeader('Cache-Control', 'no-cache');
     res.json(this.quizDisney);
+});
+app.get('/getQuestionRandom/:idGame/:countQuestion',function(req,res){
+    var game = findGameById(req.params.idGame);
+    // var questions = [];
+    if(req.params.countQuestion != game.countCurrentQuestion){
+        game.countCurrentQuestion++;    
+    }
+    // var randomQuestion = game.questions[Math.floor(Math.random()*questions.length)];
+    // var randomQuestion = game.questions[Math.floor(Math.random()*questions.length)];
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(game.questions[req.params.countQuestion]);
 });
 
 
@@ -138,6 +150,8 @@ function Game(nameGame, numberPlayer){
     this.numberPlayer = numberPlayer;
     this.usersInGame = [];
     this.quizList = [];
+    this.questions = getAllQuestions();
+    // this.questionsDone = [];
     this.countCurrentQuestion = 0;
 }
 function Quiz(nameQuiz){
@@ -185,6 +199,16 @@ function findGameById(idGame){
         }
     }
     return null;
+}
+function getAllQuestions(){
+    var allQuiz = getAllQuiz();
+    var questions = [];
+    for (var i = 0 ; i < allQuiz.length ; i++) {
+        for(var j = 0 ; j < allQuiz[i].questions.length ; j++){
+            questions.push(allQuiz[i].questions[j])
+        }
+    }
+    return questions.sort();
 }
 function getAllQuiz(){
     var quizListGlobal = [];

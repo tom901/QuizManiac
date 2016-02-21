@@ -8,7 +8,7 @@ angular.module('app.waitTheOthers', [])
 		if($rootScope.game.stateGame == 0){
 			alert('Le jeu va commencer');
 			clearInterval(refreshIntervalId);
-			$state.go('app.listAllQuiz')
+			$state.go('app.gameOnline');
 		}
 	}, 100);
 
