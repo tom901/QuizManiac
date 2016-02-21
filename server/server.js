@@ -172,20 +172,3 @@ function findGameById(idGame){
     }
     return null;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

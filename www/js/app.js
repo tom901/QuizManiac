@@ -8,7 +8,9 @@
 // var URL_LOCAL_SERVER = 'http://192.168.137.1:9000';
 var URL_LOCAL_SERVER = 'http://localhost:9000';
 var app = angular.module('app', [
-  'ionic', 
+  'ionic',
+  'ngCordova',
+  'ionic-material',
   'app.home', 
   'app.gameover',
   'app.quizz',
@@ -55,3 +57,7 @@ var app = angular.module('app', [
     }
   });
 })
+.config(function($ionicConfigProvider) {
+    $ionicConfigProvider.platform.ios.navBar.alignTitle('left');
+    $ionicConfigProvider.backButton.text('').icon('ion-chevron-left').previousTitleText(false);
+  });
