@@ -10,9 +10,9 @@
 .game-bg{
 	background-color: #518ea0;
 }
-ion-content, .game-bg-light{
+/*ion-content, .game-bg-light{
 	background-color: #eadea8;
-}
+}*/
 .text-center{
 	text-align: center;
 }

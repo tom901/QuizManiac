@@ -29,10 +29,6 @@ angular.module('app.gameOnline', [])
 
 
    var refreshIntervalId = setInterval(function(){ 
-    console.log('$rootScope.game.countCurrentQuestion');
-    console.log($rootScope.game.countCurrentQuestion);
-    console.log('$scope.countQuestion');
-    console.log($scope.countQuestion);
         GameService.getGameByName($rootScope.game.name);
         if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
             QuizService.getNextQuestion($rootScope.game.id, $rootScope.game.countCurrentQuestion , function(data){
@@ -52,7 +48,6 @@ angular.module('app.gameOnline', [])
      if(answer.weight == 1){
         console.log('Bonne réponse !!! ');
         $scope.countQuestion++;
-        
         QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){
         $scope.question = data;
       });

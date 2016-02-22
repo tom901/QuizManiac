@@ -38,8 +38,6 @@ angular.module('app.partysolo', [])
   		}
 
   		if($scope.countQuestion == $rootScope.quizSelected.questions.length - 1){
-  			console.log('avant calcule ');
-  			console.log(goodAnswer);
   			alert('Vous avez répondu à '+ Math.round( (goodAnswer * 100) / $rootScope.quizSelected.questions.length) +'% de bonnes réponses');
   			$state.go('app.home');
 			$scope.countQuestion  = 0;
@@ -70,10 +68,10 @@ angular.module('app.partysolo', [])
 	$timeout(function() {
 		angular.element(document.querySelector('#hero-has-mask')).addClass("heroUp");
 		angular.element(document.querySelector('#nb-question-id')).addClass("hideUpElement");
-	}, 4000);
+	}, 2000);
 	$timeout(function() {
 		angular.element(document.querySelector('#answerArea')).addClass("visibleUpElement");
-	}, 5000);
+	}, 3000);
 
     // Set Ink
     ionicMaterialInk.displayEffect();
