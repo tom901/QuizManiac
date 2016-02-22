@@ -1,0 +1,134 @@
+{
+    "type": "quiz",
+    "name": "Musique et chansons",
+    "description": "Retrouvez les films à l'aide des noms des personnages.",
+    "questions": [
+        {
+            "name": "Quelle chanson de Claude François exprimant la lassitude amoureuse est devenue un classique grâce à sa version américaine My Way ?",
+            "answers": [
+                {
+                    "name": "Le mal aimé",
+                    "weight": 0
+                },
+                {
+                    "name": "Comme d'habitude",
+                    "weight": 1
+                },
+                {
+                    "name": "Les moulins de mon cœur",
+                    "weight": 0
+                },
+                {
+                    "name": "Lucas",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Quelle chanson Shakira a-t-elle interprétée lors de la cérémonie d'ouverture de la Coupe du Monde de la FIFA 2010 en Afrique du Sud ?",
+            "answers": [
+                {
+                    "name": "Loca",
+                    "weight": 0
+                },
+                {
+                    "name": "Rabiosa",
+                    "weight": 0
+                },
+                {
+                    "name": "Waka Waka",
+                    "weight": 1
+                },
+                {
+                    "name": "",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Le clip en noir et blanc montre Florent Pagny s'exprimer en langage des signes. Quelle est cette chanson ?",
+            "answers": [
+                {
+                    "name": "Savoir aimer",
+                    "weight": 1
+                },
+                {
+                    "name": "Chanter",
+                    "weight": 0
+                },
+                {
+                    "name": "Caruso",
+                    "weight": 0
+                },
+                {
+                    "name": "Fantasia",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "'Personne, personne, personne ne peut s'immiscer sur le chemin de mes sentiments'. Quel est le titre de cette chanson d'Alicia Keys ?",
+            "answers": [
+                {
+                    "name": "Fallin",
+                    "weight": 0
+                },
+                {
+                    "name": "No One",
+                    "weight": 1
+                },
+                {
+                    "name": "A Woman's Worth",
+                    "weight": 0
+                },
+                {
+                    "name": "",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Dans quelle chanson Édith Piaf a-t-elle déclaré : Dieu réunit ceux qui s'aiment ?",
+            "answers": [
+                {
+                    "name": "La vie en rose",
+                    "weight": 0
+                },
+                {
+                    "name": "L'Hymne à l'amour",
+                    "weight": 1
+                },
+                {
+                    "name": "La valse de l'amour",
+                    "weight": 0
+                },
+                {
+                    "name": "",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Whitney Houston interprète '... ', chanson du film 'The Bodyguard', en 1992.",
+            "answers": [
+                {
+                    "name": "I Will Always Love You",
+                    "weight": 1
+                },
+                {
+                    "name": "My Love Is Your Love",
+                    "weight": 0
+                },
+                {
+                    "name": "Saving All My Love For You",
+                    "weight": 0
+                },
+                {
+                    "name": "",
+                    "weight": 0
+                }
+            ]
+        }
+        
+    ]
+}

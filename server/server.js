@@ -9,7 +9,10 @@ var gamesList = [];
 var gamesRandomList = [];
 
 var quizSimpsons = {};
-var quizDisney = {};
+var quizDisney1 = {};
+var quizDisney2 = {};
+var quizDisney3 = {};
+var quizMusic1 = {};
 
 initAllQuiz();
 
@@ -54,10 +57,21 @@ app.get('/getQuizSimpsons', function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(this.quizSimpsons);
 });
-app.get('/getQuizDisney', function(req, res) {
-
+app.get('/getQuizDisney1', function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
-    res.json(this.quizDisney);
+    res.json(this.quizDisney1);
+});
+app.get('/getQuizDisney2', function(req, res) {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(this.quizDisney2);
+});
+app.get('/getQuizDisney3', function(req, res) {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(this.quizDisney3);
+});
+app.get('/getQuizMusic1', function(req, res) {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(this.quizMusic1);
 });
 app.get('/getQuestionRandom/:idGame/:countQuestion',function(req,res){
     var game = findGameById(req.params.idGame);
@@ -225,46 +239,46 @@ function findGameById(idGame){
 function getAllQuestions(){
     var allQuiz = getAllQuiz();
     var questions = [];
-    for (var i = 0 ; i < allQuiz.length ; i++) {
-        for(var j = 0 ; j < allQuiz[i].questions.length ; j++){
-            questions.push(allQuiz[i].questions[j])
+    // on récupere 2 question par quiz afin d'avoir une liste de question aleatoire
+    for(var i = 0 ; i < 2 ; i++){
+        for(var j = 0 ; j < allQuiz.length ; j++){
+            questions.push(allQuiz[j].questions[Math.floor(Math.random()*allQuiz[j].questions.length)])
         }
     }
+
+    // for (var i = 0 ; i < allQuiz.length ; i++) {
+    //     for(var j = 0 ; j < allQuiz[i].questions.length ; j++){
+    //         questions.push(allQuiz[i].questions[j])
+    //     }
+    // }
     return questions.sort();
 }
 function getAllQuiz(){
     var quizListGlobal = [];
     quizListGlobal.push(this.quizSimpsons);
-    quizListGlobal.push(this.quizDisney);
+    quizListGlobal.push(this.quizDisney1);
+    quizListGlobal.push(this.quizDisney2);
+    quizListGlobal.push(this.quizDisney3);
+    quizListGlobal.push(this.quizMusic1);
     return quizListGlobal;
 }
 function initAllQuiz(){ 
     fs.readFile('quizSimpsons.json', function(err, data) {
         this.quizSimpsons = JSON.parse(data);
     });
-    fs.readFile('quizDisney.json', function(err, data) {
-        this.quizDisney = JSON.parse(data);
+    fs.readFile('quizDisney1.json', function(err, data) {
+        this.quizDisney1 = JSON.parse(data);
+    });
+    fs.readFile('quizDisney2.json', function(err, data) {
+        this.quizDisney2 = JSON.parse(data);
+    });
+    fs.readFile('quizDisney3.json', function(err, data) {
+        this.quizDisney3 = JSON.parse(data);
+    });
+    fs.readFile('quizMusic1.json', function(err, data) {
+        this.quizMusic1 = JSON.parse(data);
     });
 }
-// function getQuizSimpsons(){
-//     if(typeof this.quizSimpsons == 'undefined' || this.quizSimpsons == null){
-//         fs.readFile('quizSimpsons.json', function(err, data) {
-//         this.quizSimpsons = JSON.parse(data);
-//         console.log('dans la condfition')
-//     });
-//     }
-//     return this.quizSimpsons;
-// }
-// function getQuizDisney(){
-//     if(typeof this.quizDisney == 'undefined' || this.quizDisney == null){
-//         fs.readFile('quizDisney.json', function(err, data) {
-//         this.quizDisney = JSON.parse(data);
-//     });
-//     }
-//     return this.quizDisney;
-// }
-
-
 
 
 
