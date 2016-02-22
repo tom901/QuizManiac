@@ -1,5 +1,5 @@
 angular.module('app.home', [])
-.controller('homeCtrl', function($scope, $timeout,$cordovaToast,$ionicPlatform,
+.controller('homeCtrl', function($scope, $timeout,$cordovaToast,$ionicPlatform, $state,$rootScope,
                                  ionicMaterialMotion, ionicMaterialInk, URL_SERVER) {
     // var device = ionic.Platform.isWebView();
     // console.log(device);
@@ -18,6 +18,13 @@ angular.module('app.home', [])
     //       });
     //     });
     // }
+    $scope.checkUserSigned = function(){
+        if($rootScope.user == null){
+            $state.go('app.signup');
+        }else{
+            $state.go('app.newOrJoinGame');
+        }
+    }
 // Set Header
 /*    $scope.$parent.showHeader();
     $scope.$parent.clearFabs();*/

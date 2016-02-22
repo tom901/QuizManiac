@@ -23,6 +23,7 @@ var app = angular.module('app', [
   'app.themeSelected',
   'app.waitTheOthers',
   'app.newOrJoinGame',
+  'app.gameType',
   'app.joinGame',
   'app.routes',
   'app.services',

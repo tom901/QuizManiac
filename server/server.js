@@ -143,7 +143,7 @@ function User(nameUser){
   this.name = nameUser;
 }
 
-function Game(nameGame, numberPlayer){
+function Game(nameGame, numberPlayer, gameType){
     this.id = nameGame+Date.now();
     this.name = nameGame;
     this.stateGame = 1; // -1 partie terminé , 0 partie en cours, 1 partie en attente

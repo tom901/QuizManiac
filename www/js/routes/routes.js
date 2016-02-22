@@ -32,7 +32,7 @@ angular.module('app.routes', [])
       }
     })
     .state('app.newGame', {
-      url: '/newGame',
+      url: '/newGame/:gameType',
       views: {
         'side-menu': {
           templateUrl: 'templates/newGame.html',
@@ -55,6 +55,15 @@ angular.module('app.routes', [])
         'side-menu': {
           templateUrl: 'templates/newOrJoinGame.html',
           controller: 'NewOrJoinGameCtrl'
+        }
+      }
+    })
+    .state('app.gameType', {
+      url: '/gameType',
+      views: {
+        'side-menu': {
+          templateUrl: 'templates/gameType.html',
+          controller: 'GameTypeCtrl'
         }
       }
     })

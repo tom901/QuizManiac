@@ -9,22 +9,27 @@
 
         <div class="padding">
             <h4>
-                <strong>Que voulez vous faire ?</strong>
+                <strong>Quelle type de partie voulez-vous faire ?</strong>
             </h4>
-            <p>Ici, défiez vos opposants en répondant le plus rapidement possible  au question !</p>
         </div>
         <div class="padding">
             <div class="list animate-fade-slide-in-right">
-                <a ui-sref="app.gameType" class="item item-avatar item-icon-right">
+                <a ui-sref="app.newGame({gameType: 'death'})" class="item item-avatar item-icon-right">
                     <img src="img/networking-icon.png">
-                    <h2>Créer une nouvelle partie</h2>
-                    <p>Une partie de ta création</p>
+                    <h2>Course à la mort</h2>
+                    <p>Répondez le plus rapidement possible !</p>
                     <i class="icon ion-chevron-right muted"></i>
                 </a>
-                <a ui-sref="app.joinGame" class="item item-avatar item-icon-right">
+                <a ui-sref="app.newGame({gameType: 'quickly'})" class="item item-avatar item-icon-right">
                     <img src="img/networking-icon.png">
-                    <h2>Rejoindre une partie</h2>
-                    <p>Jouez contre des inconnus !</p>
+                    <h2>Course à la perfection</h2>
+                    <p>La vitesse ne fait pas tout !</p>
+                    <i class="icon ion-chevron-right muted"></i>
+                </a>
+                <a ui-sref="app.newGame({gameType: 'duel'})" class="item item-avatar item-icon-right">
+                    <img src="img/networking-icon.png">
+                    <h2>Course au duel </h2>
+                    <p>Choissisez votre quiz chacun votre tour !</p>
                     <i class="icon ion-chevron-right muted"></i>
                 </a>
             </div>

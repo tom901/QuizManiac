@@ -1,13 +1,10 @@
 angular.module('app.newGame', [])
-.controller('NewGameCtrl', function($scope, $rootScope, GameService) {
+.controller('NewGameCtrl', function($scope, $rootScope, $stateParams, GameService) {
 	$scope.gameInput = {};
-
+	console.log('NewGameCtrl : $stateParams.gameType');
+	console.log($stateParams.gameType);
 	$scope.createGame = function(){
-		console.log('game before create : ');
-		console.log($scope.gameInput.name);
-		console.log($scope.gameInput.numberUser);
-		console.log($rootScope.user);
 		GameService.createNewGame($rootScope.user.id,$scope.gameInput.name,$scope.gameInput.numberUser);
-
 	}
+
 })
