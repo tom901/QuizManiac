@@ -86,7 +86,7 @@ angular.module('app.routes', [])
       }
     })
     .state('app.waitTheOthers', {
-      url: '/waitTheOthers',
+      url: '/waitTheOthers/:random',
       views: {
         'side-menu': {
           templateUrl: 'templates/waitTheOthers.html',

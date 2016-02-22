@@ -6,6 +6,7 @@ var cors = require('cors');
 var app = express();
 var usersList = [];
 var gamesList = [];
+var gamesRandomList = [];
 
 var quizSimpsons = {};
 var quizDisney = {};
@@ -93,6 +94,27 @@ app.get('/createGame/:nameUser/:nameGame/:numberPlayer', function(req,res){
     console.log('Nouvelle partie : game = '+ game);
     res.send(game);
 });
+// Route pour créer un nouveau game et jouer contre une personne aleatoire
+app.get('/randomGame/:idUser', function(req,res){
+    var game;
+    if(gamesRandomList.length > 0){
+        game = gamesRandomList[0];
+        game.usersInGame.push(findUserById(req.params.idUser));
+        if(game.usersInGame.length == game.numberPlayer){
+            game.stateGame = 0;
+        }
+        // gamesList.push(game);
+        gamesRandomList = [];
+    }else{
+        game = new Game('gameRandom', 2);
+        game.stateGame = 2;
+        game.usersInGame.push(findUserById(req.params.idUser));
+        gamesRandomList.push(game);
+        gamesList.push(game);
+    }
+   
+    res.send(game);
+});
 // Route pour joindre un utilisateur dans une partie 
 app.get('/joinUserInGame/:idUser/:idGame', function(req,res){
     var game = findGameById(req.params.idGame);
@@ -146,7 +168,7 @@ function User(nameUser){
 function Game(nameGame, numberPlayer, gameType){
     this.id = nameGame+Date.now();
     this.name = nameGame;
-    this.stateGame = 1; // -1 partie terminé , 0 partie en cours, 1 partie en attente
+    this.stateGame = 1; // -1 partie terminé , 0 partie en cours, 1 partie en attente, 2 partie aleatoire
     this.numberPlayer = numberPlayer;
     this.usersInGame = [];
     this.quizList = [];

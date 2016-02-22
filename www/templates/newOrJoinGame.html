@@ -24,7 +24,13 @@
                 <a ui-sref="app.joinGame" class="item item-avatar item-icon-right">
                     <img src="img/networking-icon.png">
                     <h2>Rejoindre une partie</h2>
-                    <p>Jouez contre des inconnus !</p>
+                    <p>Jouez contre des amis !</p>
+                    <i class="icon ion-chevron-right muted"></i>
+                </a>
+                <a ui-sref="app.waitTheOthers({random: true})" ng-click="goRandomGame()" class="item item-avatar item-icon-right">
+                    <img src="img/networking-icon.png">
+                    <h2>Partie aléatoire</h2>
+                    <p>Jouez contre contre un inconnu !</p>
                     <i class="icon ion-chevron-right muted"></i>
                 </a>
             </div>
