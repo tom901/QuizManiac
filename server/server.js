@@ -111,6 +111,8 @@ app.get('/createGame/:nameUser/:nameGame/:numberPlayer', function(req,res){
 // Route pour créer un nouveau game et jouer contre une personne aleatoire
 app.get('/randomGame/:idUser', function(req,res){
     var game;
+    console.log('gamesRandomList.length');
+    console.log(gamesRandomList.length);
     if(gamesRandomList.length > 0){
         game = gamesRandomList[0];
         game.usersInGame.push(findUserById(req.params.idUser));
@@ -120,7 +122,7 @@ app.get('/randomGame/:idUser', function(req,res){
         // gamesList.push(game);
         gamesRandomList = [];
     }else{
-        game = new Game('gameRandom', 2);
+        game = new Game('gameRandom'+Date.now(), 2);
         game.stateGame = 2;
         game.usersInGame.push(findUserById(req.params.idUser));
         gamesRandomList.push(game);

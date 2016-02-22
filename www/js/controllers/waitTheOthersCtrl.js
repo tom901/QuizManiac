@@ -1,9 +1,6 @@
 angular.module('app.waitTheOthers', [])
 .controller('waitTheOthersCtrl', function($scope, $rootScope, $state, $stateParams, GameService) {
-	// if($stateParams.random){
-	// 	console.log('Dans une partie aleatoire');
-		
-	// }else{
+	
 		var refreshIntervalId = setInterval(function(){ 
 			GameService.getGameByName($rootScope.game.name);
 			if($rootScope.game.stateGame == 0){
@@ -12,9 +9,6 @@ angular.module('app.waitTheOthers', [])
 				$state.go('app.gameOnline');
 			}
 		}, 100);
-	// }
 
 	
-
-	/* later */
 })
