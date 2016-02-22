@@ -6,9 +6,13 @@ var cors = require('cors');
 var app = express();
 var usersList = [];
 var gamesList = [];
+var gamesRandomList = [];
 
 var quizSimpsons = {};
-var quizDisney = {};
+var quizDisney1 = {};
+var quizDisney2 = {};
+var quizDisney3 = {};
+var quizMusic1 = {};
 
 initAllQuiz();
 
@@ -53,10 +57,21 @@ app.get('/getQuizSimpsons', function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(this.quizSimpsons);
 });
-app.get('/getQuizDisney', function(req, res) {
-
+app.get('/getQuizDisney1', function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
-    res.json(this.quizDisney);
+    res.json(this.quizDisney1);
+});
+app.get('/getQuizDisney2', function(req, res) {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(this.quizDisney2);
+});
+app.get('/getQuizDisney3', function(req, res) {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(this.quizDisney3);
+});
+app.get('/getQuizMusic1', function(req, res) {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(this.quizMusic1);
 });
 app.get('/getQuestionRandom/:idGame/:countQuestion',function(req,res){
     var game = findGameById(req.params.idGame);
@@ -91,6 +106,29 @@ app.get('/createGame/:nameUser/:nameGame/:numberPlayer', function(req,res){
     game.usersInGame.push(findUserById(req.params.nameUser));
     gamesList.push(game);
     console.log('Nouvelle partie : game = '+ game);
+    res.send(game);
+});
+// Route pour créer un nouveau game et jouer contre une personne aleatoire
+app.get('/randomGame/:idUser', function(req,res){
+    var game;
+    console.log('gamesRandomList.length');
+    console.log(gamesRandomList.length);
+    if(gamesRandomList.length > 0){
+        game = gamesRandomList[0];
+        game.usersInGame.push(findUserById(req.params.idUser));
+        if(game.usersInGame.length == game.numberPlayer){
+            game.stateGame = 0;
+        }
+        // gamesList.push(game);
+        gamesRandomList = [];
+    }else{
+        game = new Game('gameRandom'+Date.now(), 2);
+        game.stateGame = 2;
+        game.usersInGame.push(findUserById(req.params.idUser));
+        gamesRandomList.push(game);
+        gamesList.push(game);
+    }
+   
     res.send(game);
 });
 // Route pour joindre un utilisateur dans une partie 
@@ -146,7 +184,7 @@ function User(nameUser){
 function Game(nameGame, numberPlayer, gameType){
     this.id = nameGame+Date.now();
     this.name = nameGame;
-    this.stateGame = 1; // -1 partie terminé , 0 partie en cours, 1 partie en attente
+    this.stateGame = 1; // -1 partie terminé , 0 partie en cours, 1 partie en attente, 2 partie aleatoire
     this.numberPlayer = numberPlayer;
     this.usersInGame = [];
     this.quizList = [];
@@ -203,46 +241,46 @@ function findGameById(idGame){
 function getAllQuestions(){
     var allQuiz = getAllQuiz();
     var questions = [];
-    for (var i = 0 ; i < allQuiz.length ; i++) {
-        for(var j = 0 ; j < allQuiz[i].questions.length ; j++){
-            questions.push(allQuiz[i].questions[j])
+    // on récupere 2 question par quiz afin d'avoir une liste de question aleatoire
+    for(var i = 0 ; i < 2 ; i++){
+        for(var j = 0 ; j < allQuiz.length ; j++){
+            questions.push(allQuiz[j].questions[Math.floor(Math.random()*allQuiz[j].questions.length)])
         }
     }
+
+    // for (var i = 0 ; i < allQuiz.length ; i++) {
+    //     for(var j = 0 ; j < allQuiz[i].questions.length ; j++){
+    //         questions.push(allQuiz[i].questions[j])
+    //     }
+    // }
     return questions.sort();
 }
 function getAllQuiz(){
     var quizListGlobal = [];
     quizListGlobal.push(this.quizSimpsons);
-    quizListGlobal.push(this.quizDisney);
+    quizListGlobal.push(this.quizDisney1);
+    quizListGlobal.push(this.quizDisney2);
+    quizListGlobal.push(this.quizDisney3);
+    quizListGlobal.push(this.quizMusic1);
     return quizListGlobal;
 }
 function initAllQuiz(){ 
     fs.readFile('quizSimpsons.json', function(err, data) {
         this.quizSimpsons = JSON.parse(data);
     });
-    fs.readFile('quizDisney.json', function(err, data) {
-        this.quizDisney = JSON.parse(data);
+    fs.readFile('quizDisney1.json', function(err, data) {
+        this.quizDisney1 = JSON.parse(data);
+    });
+    fs.readFile('quizDisney2.json', function(err, data) {
+        this.quizDisney2 = JSON.parse(data);
+    });
+    fs.readFile('quizDisney3.json', function(err, data) {
+        this.quizDisney3 = JSON.parse(data);
+    });
+    fs.readFile('quizMusic1.json', function(err, data) {
+        this.quizMusic1 = JSON.parse(data);
     });
 }
-// function getQuizSimpsons(){
-//     if(typeof this.quizSimpsons == 'undefined' || this.quizSimpsons == null){
-//         fs.readFile('quizSimpsons.json', function(err, data) {
-//         this.quizSimpsons = JSON.parse(data);
-//         console.log('dans la condfition')
-//     });
-//     }
-//     return this.quizSimpsons;
-// }
-// function getQuizDisney(){
-//     if(typeof this.quizDisney == 'undefined' || this.quizDisney == null){
-//         fs.readFile('quizDisney.json', function(err, data) {
-//         this.quizDisney = JSON.parse(data);
-//     });
-//     }
-//     return this.quizDisney;
-// }
-
-
 
 
 

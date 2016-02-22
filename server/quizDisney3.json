@@ -1,0 +1,134 @@
+{
+    "type": "quiz",
+    "name": "Quel film de Disney ?",
+    "description": "Retrouvez les films à l'aide des noms des personnages.",
+    "questions": [
+        {
+            "name": "Meeko, Flit, Radcliff, Powatan, John : ",
+            "answers": [
+                {
+                    "name": "La Petite Sirène",
+                    "weight": 0
+                },
+                {
+                    "name": "Pocahontas",
+                    "weight": 1
+                },
+                {
+                    "name": "Mulan",
+                    "weight": 0
+                },
+                {
+                    "name": "La Belle et la Bête",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Wendy, Jean, Mouche, Clochette, Michel :",
+            "answers": [
+                {
+                    "name": "Mulan",
+                    "weight": 0
+                },
+                {
+                    "name": "La Belle au Bois Dormant",
+                    "weight": 0
+                },
+                {
+                    "name": "Peter Pan",
+                    "weight": 1
+                },
+                {
+                    "name": "Blanche-Neige et les 7 Nains",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Megara, Hades, Peine, Panique, Philoctète :",
+            "answers": [
+                {
+                    "name": "Hercule",
+                    "weight": 1
+                },
+                {
+                    "name": "Le Bossu de Notre Dame",
+                    "weight": 0
+                },
+                {
+                    "name": "L'Atlantide",
+                    "weight": 0
+                },
+                {
+                    "name": "Fantasia",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Médusa, Penny, Orville, Mr Snoops, Evinrude :",
+            "answers": [
+                {
+                    "name": "Bambi",
+                    "weight": 0
+                },
+                {
+                    "name": "CendrillonLa Belle et le Clochard",
+                    "weight": 0
+                },
+                {
+                    "name": "La Belle et le Clochard",
+                    "weight": 0
+                },
+                {
+                    "name": "Bernard et Bianca",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "name": "Eric, Ursula, Triton, Sebastien, Polochon :",
+            "answers": [
+                {
+                    "name": "Hercule",
+                    "weight": 0
+                },
+                {
+                    "name": "La Petite Sirène",
+                    "weight": 1
+                },
+                {
+                    "name": "Dumbo",
+                    "weight": 0
+                },
+                {
+                    "name": "Bambi",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Gus, Jack, Anastasie, Javotte, Mme de Trémaine, Lucifer :Cendrillon",
+            "answers": [
+                {
+                    "name": "Cendrillon",
+                    "weight": 1
+                },
+                {
+                    "name": "La Belle au Bois Dormant",
+                    "weight": 0
+                },
+                {
+                    "name": "Aladdin",
+                    "weight": 0
+                },
+                {
+                    "name": "Hercule",
+                    "weight": 0
+                }
+            ]
+        }
+        
+    ]
+}

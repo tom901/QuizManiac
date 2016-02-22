@@ -1,6 +1,6 @@
 angular.module('app.gameOnline', [])
 
-.controller('GameOnlineCtrl', function($scope, $rootScope, $state, $http,
+.controller('GameOnlineCtrl', function($scope, $rootScope, $state, $http,$ionicHistory,
    $ionicSlideBoxDelegate, $timeout, ionicMaterialMotion, ionicMaterialInk,
    QuizService, GameService) {
     $scope.countdownTxt = 10;
@@ -39,6 +39,15 @@ angular.module('app.gameOnline', [])
     }, 500);
 
    var goodAnswer = 0;
+
+   $rootScope.$ionicGoBack = function(backCount) {
+        $ionicHistory.goBack(backCount);
+        console.log('dans la fonction back');
+        $rootScope.game = null;
+        $state.go('app.newOrJoinGame');
+        clearInterval(refreshIntervalId);
+
+    };
 
    $scope.nextSlide = function() {
      $ionicSlideBoxDelegate.next();

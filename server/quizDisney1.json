@@ -1,0 +1,134 @@
+{
+    "type": "quiz",
+    "name": "Les cochons de Disney",
+    "description": "Connaissez-vous les cochons des dessins animés ?",
+    "questions": [
+        {
+            "name": "Comment s'appelle le cochon bégayeur des Looney Toones ?",
+            "answers": [
+                {
+                    "name": "Cochonou",
+                    "weight": 0
+                },
+                {
+                    "name": "Porky",
+                    "weight": 1
+                },
+                {
+                    "name": "Porcinet",
+                    "weight": 0
+                },
+                {
+                    "name": "Porcelet",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Comment s'appelle sa fiancée ?",
+            "answers": [
+                {
+                    "name": "Pétunia",
+                    "weight": 1
+                },
+                {
+                    "name": "Rosa",
+                    "weight": 0
+                },
+                {
+                    "name": "Piggy",
+                    "weight": 0
+                },
+                {
+                    "name": "Lola",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Comment s'appelle le goret rose, timide et craintif , qui est le meilleur ami de Winnie l'ourson ?",
+            "answers": [
+                {
+                    "name": "Cochonou",
+                    "weight": 0
+                },
+                {
+                    "name": "Porcinet",
+                    "weight": 1
+                },
+                {
+                    "name": "Gourou",
+                    "weight": 0
+                },
+                {
+                    "name": "Babe",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Quel sympathique gaulois aime bien les sangliers ?",
+            "answers": [
+                {
+                    "name": "Astérix",
+                    "weight": 0
+                },
+                {
+                    "name": "Idéfix",
+                    "weight": 0
+                },
+                {
+                    "name": "Obélix",
+                    "weight": 1
+                },
+                {
+                    "name": "Panoramix",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Lequel des 3 petits cochons a construit une maison en briques pour se protéger du Grand Méchant Loup ?",
+            "answers": [
+                {
+                    "name": "Nif-Nif",
+                    "weight": 0
+                },
+                {
+                    "name": "Naf-Naf",
+                    "weight": 1
+                },
+                {
+                    "name": "Nouf-Nouf",
+                    "weight": 0
+                },
+                {
+                    "name": "Nif-Naf",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Comment s'appelle le phacochère du film Le roi Lion ?",
+            "answers": [
+                {
+                    "name": "Pumbaa",
+                    "weight": 1
+                },
+                {
+                    "name": "Hakuna",
+                    "weight": 0
+                },
+                {
+                    "name": "Timon",
+                    "weight": 0
+                },
+                {
+                    "name": "Matata",
+                    "weight": 0
+                }
+            ]
+        }
+        
+    ]
+}

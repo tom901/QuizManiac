@@ -1,5 +1,6 @@
 angular.module('app.newOrJoinGame', [])
-.controller('NewOrJoinGameCtrl', function($rootScope, $scope, $timeout, ionicMaterialMotion, ionicMaterialInk, URL_SERVER) {
+.controller('NewOrJoinGameCtrl', function($rootScope, $scope, $timeout, ionicMaterialMotion, ionicMaterialInk, $ionicHistory,$state,
+    GameService ,ionicMaterialInk, URL_SERVER) {
     $scope.isExpanded = false;
     // Set Motion
     $timeout(function() {
@@ -28,4 +29,15 @@ angular.module('app.newOrJoinGame', [])
     // Set Ink
     ionicMaterialInk.displayEffect();
 	// $rootScope.toggleSound();
+    $scope.goRandomGame = function(){
+        GameService.randomGame($rootScope.user.id);
+    }
+
+    $rootScope.$ionicGoBack = function(backCount) {
+        $ionicHistory.goBack(backCount);
+        if($rootScope.user != null){
+            $state.go('app.home');
+        }
+
+    };
 })

@@ -1,0 +1,134 @@
+{
+    "type": "quiz",
+    "name": "Les souris de Disney",
+    "description": "Connaissez-vous les souris des dessins animés ?",
+    "questions": [
+        {
+            "name": "Comment s'appelle le rat cuisinier qui fait équipe avec Linguini ?",
+            "answers": [
+                {
+                    "name": "Rémy",
+                    "weight": 1
+                },
+                {
+                    "name": "Emile",
+                    "weight": 0
+                },
+                {
+                    "name": "Ratatouille",
+                    "weight": 0
+                },
+                {
+                    "name": "Gaston",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Comment s'appelle la souris la plus rapide du Mexique ?",
+            "answers": [
+                {
+                    "name": "Rapido Hernandez",
+                    "weight": 0
+                },
+                {
+                    "name": "Speedy Gonzales",
+                    "weight": 1
+                },
+                {
+                    "name": "Pancho Rodriguez",
+                    "weight": 0
+                },
+                {
+                    "name": "Rapido Fernandez",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Quel était le nom d'origine de la célèbre souris Disney ?",
+            "answers": [
+                {
+                    "name": "Mortimer",
+                    "weight": 1
+                },
+                {
+                    "name": "Stiky",
+                    "weight": 0
+                },
+                {
+                    "name": "Félix",
+                    "weight": 0
+                },
+                {
+                    "name": "Mitch",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Quelle petite souris a été adoptée par une famille américaine ?",
+            "answers": [
+                {
+                    "name": "Jack",
+                    "weight": 0
+                },
+                {
+                    "name": "Basile",
+                    "weight": 0
+                },
+                {
+                    "name": "Alvin",
+                    "weight": 0
+                },
+                {
+                    "name": "Stuart",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "name": "Quel est le nom de la souris amie de Dumbo l'éléphant ?",
+            "answers": [
+                {
+                    "name": "Mortimer",
+                    "weight": 0
+                },
+                {
+                    "name": "Timothée",
+                    "weight": 1
+                },
+                {
+                    "name": "Barthélémy",
+                    "weight": 0
+                },
+                {
+                    "name": "Sanshez",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name": "Comment s'appelle le petit rat rondouillard en bleu de travail dans Ratz ?",
+            "answers": [
+                {
+                    "name": "Razmo",
+                    "weight": 1
+                },
+                {
+                    "name": "Oggy",
+                    "weight": 0
+                },
+                {
+                    "name": "Rapido",
+                    "weight": 0
+                },
+                {
+                    "name": "Glumo",
+                    "weight": 0
+                }
+            ]
+        }
+        
+    ]
+}
