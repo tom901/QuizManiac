@@ -1,9 +1,9 @@
 angular.module('app.gameOnline', [])
 
 .controller('GameOnlineCtrl', function($scope, $rootScope, $state, $http,$ionicHistory,
-   $ionicSlideBoxDelegate, $timeout, ionicMaterialMotion, ionicMaterialInk,
-   QuizService, GameService) {
-    $scope.countdownTxt = 10;
+ $ionicSlideBoxDelegate, $timeout, ionicMaterialMotion, ionicMaterialInk,
+ QuizService, GameService) {
+  $scope.countdownTxt = 10;
     // $scope.countdown = function() {
     //     var time = 10; /* how long the timer runs for */
     //     var initialOffset = '440';
@@ -23,47 +23,65 @@ angular.module('app.gameOnline', [])
 
 	//compteur pour faire défiler les questions lors de chaque réponse
 	$scope.countQuestion  = 0;
-   QuizService.getNextQuestion($rootScope.game.id,$scope.countQuestion, function(data){
-      $scope.question = data;
-  });
+    QuizService.getNextQuestion($rootScope.game.id,$scope.countQuestion, function(data){
+        $scope.question = data;
+    });
 
+    if($rootScope.game.gameType === 'death'){
 
-   var refreshIntervalId = setInterval(function(){ 
-        GameService.getGameByName($rootScope.game.name);
-        if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
-            QuizService.getNextQuestion($rootScope.game.id, $rootScope.game.countCurrentQuestion , function(data){
-                $scope.question = data;
-                $scope.countQuestion = $rootScope.game.countCurrentQuestion;
-            });
-        }
-    }, 500);
+        var refreshIntervalId = setInterval(function(){ 
+            GameService.getGameByName($rootScope.game.name);
+            if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
+                QuizService.getNextQuestion($rootScope.game.id, $rootScope.game.countCurrentQuestion , function(data){
+                    $scope.question = data;
+                    $scope.countQuestion = $rootScope.game.countCurrentQuestion;
+                });
+            }
+        }, 100);
+    }else if($rootScope.game.gameType === 'peace'){
+        $scope.countTimer = 0;
+        setInterval(function(){
+            $scope.countTimer++;
+            if($scope.countTimer == 20){
+                $scope.countQuestion++;
+                QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){
+                    $scope.question = data;
+                    // $scope.countQuestion = $rootScope.game.countCurrentQuestion;
+                    $scope.countTimer = 0;
+                });
+            }
+        }, 1000);
+    }
+    else if($rootScope.game.gameType === 'duel'){
+        console.log('Partie Duel');
+    }
+    var goodAnswer = 0;
 
-   var goodAnswer = 0;
-
-   $rootScope.$ionicGoBack = function(backCount) {
+    $rootScope.$ionicGoBack = function(backCount) {
         $ionicHistory.goBack(backCount);
         console.log('dans la fonction back');
         $rootScope.game = null;
         $state.go('app.newOrJoinGame');
-        clearInterval(refreshIntervalId);
+        // clearInterval(refreshIntervalId);
 
     };
 
-   $scope.nextSlide = function() {
-     $ionicSlideBoxDelegate.next();
- }
+    $scope.nextSlide = function() {
+        $ionicSlideBoxDelegate.next();
+    }
 
- $scope.nextQuestion = function(answer){
-     if(answer.weight == 1){
-        console.log('Bonne réponse !!! ');
-        $scope.countQuestion++;
-        QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){
-        $scope.question = data;
-      });
-        goodAnswer++;
-    }else{
-     console.log('Mauvaise Réponse !!!');
- }
+    $scope.nextQuestion = function(answer){
+        if(answer.weight == 1){
+            console.log('Bonne réponse !!! ');
+            $scope.countQuestion++;
+            QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){
+                $scope.question = data;
+                $scope.countTimer = 0;
+            });
+            goodAnswer++;
+        }else{
+           console.log('Mauvaise Réponse !!!');
+       }
 
    // if($scope.countQuestion == $rootScope.quizSelected.questions.length - 1){
    //     console.log('avant calcule ');
@@ -85,16 +103,16 @@ $scope.$parent.setHeaderFab(false);*/
 
     // Set Motion
     $timeout(function() {
-        ionicMaterialMotion.slideUp({
-            selector: '.slide-up'
-        });
-    }, 300);
+      ionicMaterialMotion.slideUp({
+        selector: '.slide-up'
+    });
+  }, 300);
 
     $timeout(function() {
-        ionicMaterialMotion.fadeSlideInRight({
-            startVelocity: 3000
-        });
-    }, 700);
+      ionicMaterialMotion.fadeSlideInRight({
+        startVelocity: 3000
+    });
+  }, 700);
 
     // Set Ink
     ionicMaterialInk.displayEffect();

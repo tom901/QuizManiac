@@ -2,10 +2,9 @@ angular.module('app.gameService', [])
 
 .factory('GameService', function($http, $rootScope, URL_SERVER) {
   return {
-    createNewGame: function(userId, nameGame, numberUser) {
-      return $http.get(URL_SERVER+'/createGame/'+userId+'/'+nameGame+'/'+numberUser).then(function(data) {
+    createNewGame: function(userId, nameGame, numberUser, gameType) {
+      return $http.get(URL_SERVER+'/createGame/'+userId+'/'+nameGame+'/'+numberUser+'/'+gameType).then(function(data) {
         console.log('Game Service : createNewGame');
-        console.log('data');
         console.log('data.data');
         console.log(data.data);
         $rootScope.game = data.data;
