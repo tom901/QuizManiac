@@ -6,8 +6,8 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 // var URL_LOCAL_SERVER = 'http://192.168.137.1:9000';
-// var URL_LOCAL_SERVER = 'http://localhost:9000';
-var URL_LOCAL_SERVER = 'http://192.168.2.1:9000';
+var URL_LOCAL_SERVER = 'http://localhost:9000';
+// var URL_LOCAL_SERVER = 'http://192.168.2.1:9000';
 var app = angular.module('app', [
   'ionic',
   'ngCordova',
