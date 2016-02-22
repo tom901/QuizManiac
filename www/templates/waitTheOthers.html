@@ -1,14 +1,35 @@
-<ion-view title="WaitTheOthers">
-    <ion-content overflow-scroll="true" padding="true" style="background: url(img/1G8SlooSXCkKooV18F6Q_850ccb1e4b169a36961e408640e07882_large.jpg) no-repeat center;" class="has-header">
-        <div class="spacer" style="width: 282.986px; height: 29px;"></div>
-        <div style="text-align:center;">
-            <img src="img/3DZWuIMqTdqJfD4q3ue4_horloge.png" width="100%" height="auto">
+<ion-view title="En attente des autres joueurs">
+    <ion-content overflow-scroll="true" padding="false" ng-class="{expanded:$scope.isExpanded}" class="has-header">
+        <div class="hero wait-other-scroll" >
+            <div class="content">
+            <div class="spacer" style="width: 100%; height: 500px;"></div>
+                <h3><a class="light"></a></h3>
+            </div>
         </div>
-        <h3>Users connected :</h3>
-        <h4>AlexM22</h4>
-        <h4>Thom17</h4>
-        <div class="spacer" style="width: 282.986px; height: 29px;"></div>
-        <h4>All users connected !</h4>
-        <a ui-sref="themes" class="button button-light button-clear button-block ">Go !</a>
+        <div class="padding">
+            <h2 class="blink_me text-center"><strong>En attente des autres joueurs.</strong></h2>
+            <h4>
+                <strong>Utilisateurs connecté</strong>
+            </h4>
+        </div>
+
+        <div class="padding">
+            <div class="list">
+                <div class="item item-avatar item-icon-right" ng-repeat="psd in game.usersInGame">
+                    <img src="img/contact-icon.png">
+                    <h2>Pseudo {{psd.name}}</h2>
+                    <p> {{psd.id}}</p>
+                    <i class="icon ion-chevron-right muted"></i>
+                </div>
+            </div>
+        </div>
+        <div class="padding">
+            <div class="cssProgress">
+                <div class="cssProgress-label2 cssProgress-label2-center">Le jeux commence dans : ....</div>
+                <div class="progress3">
+                    <div class="cssProgress-bar cssProgress-warning cssProgress-active" style="width: 55%;"></div>
+                </div>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

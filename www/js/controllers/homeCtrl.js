@@ -1,39 +1,21 @@
 angular.module('app.home', [])
-.controller('homeCtrl', function($scope, $timeout,$cordovaToast,$ionicPlatform, $state,$rootScope,
-                                 ionicMaterialMotion, ionicMaterialInk, URL_SERVER) {
-    // var device = ionic.Platform.isWebView();
-    // console.log(device);
-    //  var deviceInformation = ionic.Platform.device();
-    // console.log(deviceInformation);
-     
-    // if(device){
-    // $ionicPlatform.ready(function() {
-    //       $cordovaToast.showShortTop('Here is a message').then(function(success) {
-    //         // success
-    //         console.log('test Toast Success');
-    //       }, function (error) {
-    //         // error
-    //         console.log('test Toast Error');
-
-    //       });
-    //     });
-    // }
+.controller('homeCtrl', function($scope, $timeout,$cordovaToast,$ionicPlatform, $state,$rootScope,ionicMaterialMotion, ionicMaterialInk, URL_SERVER) {
     $scope.checkUserSigned = function(){
+        $rootScope.popDrip.play();
         if($rootScope.user == null){
             $state.go('app.signup');
         }else{
             $state.go('app.newOrJoinGame');
         }
     }
-// Set Header
-/*    $scope.$parent.showHeader();
-    $scope.$parent.clearFabs();*/
+    $scope.popDrip = function () {
+        $rootScope.popDrip.play();
+    }
     $scope.isExpanded = false;
-/*    $scope.$parent.setExpanded(false);
-    $scope.$parent.setHeaderFab(false);*/
 
     // Set Motion
     $timeout(function() {
+        $rootScope.shortWhooshSound.play();
         ionicMaterialMotion.slideUp({
             selector: '.slide-up'
         });
@@ -44,6 +26,15 @@ angular.module('app.home', [])
             startVelocity: 3000
         });
     }, 700);
+    $timeout(function() {
+        $rootScope.shortWhooshSound1.play();
+        $timeout(function() {
+            $rootScope.shortWhooshSound2.play();
+        }, 100);
+    }, 1200);
+    $timeout(function() {
+        $rootScope.chime_bell_ding.play();
+    }, 1400);
 
     // Set Ink
     ionicMaterialInk.displayEffect();
