@@ -18,9 +18,10 @@ angular.module('app.waitTheOthers', [])
 			}
 		}, 100);
 	});
-	$scope.$on('$ionicView.leave', function () {
+	$scope.$on('$ionicView.beforeLeave', function () {
         if(refreshIntervalId != null){
             clearInterval(refreshIntervalId);
+            console.log('waitTheOthersCtrl : $ionicView.beforeLeave');
         }
     });
 
