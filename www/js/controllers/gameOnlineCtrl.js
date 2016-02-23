@@ -3,7 +3,7 @@ angular.module('app.gameOnline', [])
 .controller('GameOnlineCtrl', function($scope, $rootScope, $state, $http,$ionicHistory,
     $ionicSlideBoxDelegate, $timeout, ionicMaterialMotion, ionicMaterialInk,$interval,
     QuizService, GameService) {
-        $scope.countdownTxt = 10;
+    $scope.countdownTxt = 10;
         // $scope.countdown = function() {
         //     var time = 10; /* how long the timer runs for */
         //     var initialOffset = '440';
@@ -28,8 +28,12 @@ angular.module('app.gameOnline', [])
         });
         var refreshIntervalId = null;
 
+        var answerBlocked = false ;
+        console.log('$rootScope.game.gameType');
+        console.log($rootScope.game.gameType);
         $scope.$on('$ionicView.enter', function () {
-            if($rootScope.game.gameType === 'death'){
+            if($rootScope.game.gameType === 'death' || $rootScope.game.gameType === 'random'){
+                console.log('gameType egale death ou random');
                 refreshIntervalId = setInterval(function(){
                     GameService.getGameByName($rootScope.game.name);
                     if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
@@ -59,13 +63,15 @@ angular.module('app.gameOnline', [])
                 console.log('Partie Duel');
             }
         });
-        $scope.$on('$ionicView.leave', function () {
+        $scope.$on('$ionicView.beforeLeave', function () {
             if(refreshIntervalId != null){
-                console.log('gameOnlineCtrl $ionicView.leave : ');
+                console.log('gameOnlineCtrl $ionicView.beforeLeave : ');
                 console.log(refreshIntervalId);
                 $scope.countTimer = 0;
+                answerBlocked = false;
                 clearInterval(refreshIntervalId);
             }
+            $rootScope.game = null;
         });
 
         var goodAnswer = 0;
@@ -86,28 +92,30 @@ angular.module('app.gameOnline', [])
         }
 
         $scope.nextQuestion = function(answer){
-            if(answer.weight == 1){
-                console.log('Bonne réponse !!! ');
-                $scope.countQuestion++;
-                QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){
-                    $scope.question = data;
-                    $scope.countTimer = 0;
-                });
-                goodAnswer++;
+            if(!answerBlocked){
+                if(answer.weight == 1){
+                    toastr.clear()
+                    toastr.success('Bonne réponse !', 'Bien joué');
+                    $rootScope.pad_confirm.play();
+                    $scope.countQuestion++;
+                    QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){
+                        $scope.question = data;
+                        $scope.countTimer = 0;
+                    });
+                    goodAnswer++;
+                }else{
+                    $rootScope.jar_deny.play();
+                    toastr.clear()
+                    toastr.error('Mauvaise réponse !', 'Essayez encore');
+                    answerBlocked = true;
+                    setTimeout(function(){
+                        answerBlocked = false;
+                        console.log('on peut cocher de nouveau');
+                    }, 2000);
+                }
             }else{
-                console.log('Mauvaise Réponse !!!');
+                console.log('impossible de répondre pour le moment');
             }
-
-            // if($scope.countQuestion == $rootScope.quizSelected.questions.length - 1){
-            //     console.log('avant calcule ');
-            //     console.log(goodAnswer);
-            //     alert('Vous avez répondu à '+ Math.round( (goodAnswer * 100) / $rootScope.quizSelected.questions.length) +'% de bonnes réponses');
-            //     $state.go('app.home');
-            //     $scope.countQuestion  = 0;
-            //     goodAnswer = 0;
-            // }else{
-            //     $scope.countQuestion++;
-            // }
         }
         // Set Header
         /*    $scope.$parent.showHeader();
@@ -154,48 +162,6 @@ angular.module('app.gameOnline', [])
         $scope.nextSlide = function() {
             $ionicSlideBoxDelegate.next();
         }
-
-        $scope.nextQuestion = function(answer){
-            if(answer.weight == 1){
-                toastr.clear()
-                toastr.success('Bonne réponse !', 'Bien joué');
-                $rootScope.pad_confirm.play();
-                $scope.countQuestion++;
-                QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){
-                    $scope.question = data;
-                });
-                goodAnswer++;
-            }else{
-                $rootScope.jar_deny.play();
-                toastr.clear()
-                toastr.error('Bonne réponse !', 'Bien joué');
-            }
-
-            // if($scope.countQuestion == $rootScope.quizSelected.questions.length - 1){
-            //     console.log('avant calcule ');
-            //     console.log(goodAnswer);
-            //     alert('Vous avez répondu à '+ Math.round( (goodAnswer * 100) / $rootScope.quizSelected.questions.length) +'% de bonnes réponses');
-            //     $state.go('app.home');
-            //     $scope.countQuestion  = 0;
-            //     goodAnswer = 0;
-            // }else{
-            //     $scope.countQuestion++;
-            // }
-        }
-        $scope.isExpanded = false;
-
-        // Set Motion
-        $timeout(function() {
-            ionicMaterialMotion.slideUp({
-                selector: '.slide-up'
-            });
-        }, 300);
-
-        $timeout(function() {
-            ionicMaterialMotion.fadeSlideInRight({
-                startVelocity: 3000
-            });
-        }, 700);
 
         // Set Ink
         ionicMaterialInk.displayEffect();
