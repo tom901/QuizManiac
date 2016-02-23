@@ -44,7 +44,6 @@ angular.module('app.waitTheOthers', [])
 		$scope.waitingText = "Tenez vous prêts !"
 		if ($scope.counter>0) {
 			stopped = $timeout(function() {
-				console.log($scope.counter);
 				$scope.counter--;
 				$scope.countdown();
 			}, 1000);

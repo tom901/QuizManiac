@@ -61,8 +61,7 @@ angular.module('app.gameOnline', [])
         });
         $scope.$on('$ionicView.leave', function () {
             if(refreshIntervalId != null){
-                console.log('gameOnlineCtrl $ionicView.leave : ');
-                console.log(refreshIntervalId);
+                toastr.remove();
                 $scope.countTimer = 0;
                 clearInterval(refreshIntervalId);
             }
@@ -157,18 +156,24 @@ angular.module('app.gameOnline', [])
 
         $scope.nextQuestion = function(answer){
             if(answer.weight == 1){
-                toastr.clear()
+                toastr.remove()
                 toastr.success('Bonne réponse !', 'Bien joué');
-                $rootScope.pad_confirm.play();
+    			if ($rootScope.goodAnswerSound.playing) {
+    				$rootScope.goodAnswerSound.currentTime = 0;
+    			}
+                $rootScope.goodAnswerSound.play();
                 $scope.countQuestion++;
                 QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){
                     $scope.question = data;
                 });
                 goodAnswer++;
             }else{
+    			if ($rootScope.jar_deny.playing) {
+    				$rootScope.jar_deny.currentTime = 0;
+    			}
                 $rootScope.jar_deny.play();
-                toastr.clear()
-                toastr.error('Bonne réponse !', 'Bien joué');
+                toastr.remove()
+                toastr.error('Mauvaise réponse !', 'Bouh !');
             }
 
             // if($scope.countQuestion == $rootScope.quizSelected.questions.length - 1){

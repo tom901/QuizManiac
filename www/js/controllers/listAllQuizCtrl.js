@@ -7,6 +7,7 @@ angular.module('app.listAllQuiz', [])
     	})
     });
 	$scope.setCurrentQuiz = function(quizSelected){
+		$rootScope.popDrip.play();
 		$rootScope.quizSelected = quizSelected;
 	}
 

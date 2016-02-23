@@ -1,23 +1,27 @@
 angular.module('app.partysolo', [])
 
 .controller('PartySoloCtrl', function($scope, $rootScope, $state, $http, $ionicSlideBoxDelegate, $timeout, ionicMaterialMotion, ionicMaterialInk) {
-	console.log('$rootScope.quizSelected');
-	console.log($rootScope.quizSelected);
-    $scope.countdownTxt = 10;
-    // $scope.countdown = function() {
-    //     var time = 10; /* how long the timer runs for */
-    //     var initialOffset = '440';
-    //     var i = 1
-    //     var interval = setInterval(function() {
-    //         angular.element('.circle_animation').css('stroke-dashoffset', initialOffset-(i*(initialOffset/time)));
-    //         $scope.countdownTxt = i;
-    //         if (i == time) {
-    //             clearInterval(interval);
-    //         }
-    //         i++;
-    //     }, 1000);
-    // }
-    // $scope.countdown();
+
+	$rootScope.audio.pause();
+	$rootScope.WaitingTheOther.play();
+	$rootScope.WaitingTheOther.volume = 0.5;
+	$rootScope.WaitingTheOther.loop = true;
+
+	$scope.countdownTxt = 10;
+	// $scope.countdown = function() {
+	//     var time = 10; /* how long the timer runs for */
+	//     var initialOffset = '440';
+	//     var i = 1
+	//     var interval = setInterval(function() {
+	//         angular.element('.circle_animation').css('stroke-dashoffset', initialOffset-(i*(initialOffset/time)));
+	//         $scope.countdownTxt = i;
+	//         if (i == time) {
+	//             clearInterval(interval);
+	//         }
+	//         i++;
+	//     }, 1000);
+	// }
+	// $scope.countdown();
 	$scope.party = "";
 
 
@@ -26,45 +30,65 @@ angular.module('app.partysolo', [])
 	var goodAnswer = 0;
 
 	$scope.nextSlide = function() {
-    	$ionicSlideBoxDelegate.next();
-  	}
+		$ionicSlideBoxDelegate.next();
+	}
 
-  	$scope.nextQuestion = function(answer){
-  		if(answer.weight == 1){
-  			console.log('Bonne réponse !!! ');
+	$scope.nextQuestion = function(answer){
+		if(answer.weight == 1){
+			toastr.remove()
+			toastr.success('Bonne réponse !', 'Bien joué');
+			if ($rootScope.goodAnswerSound.playing) {
+				$rootScope.goodAnswerSound.currentTime = 0;
+			}
+			$rootScope.goodAnswerSound.play();
 			goodAnswer++;
-  		}else{
-  			console.log('Mauvaise Réponse !!!');
-  		}
+		}else{
+			if ($rootScope.jar_deny.playing) {
+				$rootScope.jar_deny.currentTime = 0;
+			}
+			$rootScope.jar_deny.play();
+			toastr.remove()
+			toastr.error('Mauvaise réponse !', 'Bouh !');
+		}
 
-  		if($scope.countQuestion == $rootScope.quizSelected.questions.length - 1){
-  			alert('Vous avez répondu à '+ Math.round( (goodAnswer * 100) / $rootScope.quizSelected.questions.length) +'% de bonnes réponses');
-  			$state.go('app.home');
+		if($scope.countQuestion == $rootScope.quizSelected.questions.length - 1){
+			$rootScope.WaitingTheOther.pause();
+			$rootScope.WaitingTheOther.volume = 0;
+			$rootScope.Round_Complete.play();
+			$rootScope.Round_Complete.volume = 0.5;
+
+			toastr.remove();
+			alert('Vous avez répondu à '+ Math.round( (goodAnswer * 100) / $rootScope.quizSelected.questions.length) +'% de bonnes réponses');
+
+			$rootScope.Round_Complete.pause();
+
+			$rootScope.audio.play();
+			$state.go('app.home');
 			$scope.countQuestion  = 0;
 			goodAnswer = 0;
-  		}else{
-	  		$scope.countQuestion++;
-  		}
-  	}
-  	// Set Header
-/*    $scope.$parent.showHeader();
-    $scope.$parent.clearFabs();*/
-    $scope.isExpanded = false;
-/*    $scope.$parent.setExpanded(false);
-    $scope.$parent.setHeaderFab(false);*/
+		}else{
+			$scope.countQuestion++;
+		}
+	}
+	// Set Header
+	/*    $scope.$parent.showHeader();
+	$scope.$parent.clearFabs();*/
+	$scope.isExpanded = false;
+	/*    $scope.$parent.setExpanded(false);
+	$scope.$parent.setHeaderFab(false);*/
 
-    // Set Motion
-    $timeout(function() {
-        ionicMaterialMotion.slideUp({
-            selector: '.slide-up'
-        });
-    }, 300);
+	// Set Motion
+	$timeout(function() {
+		ionicMaterialMotion.slideUp({
+			selector: '.slide-up'
+		});
+	}, 300);
 
-    $timeout(function() {
-        ionicMaterialMotion.fadeSlideInRight({
-            startVelocity: 3000
-        });
-    }, 700);
+	$timeout(function() {
+		ionicMaterialMotion.fadeSlideInRight({
+			startVelocity: 3000
+		});
+	}, 700);
 	$timeout(function() {
 		angular.element(document.querySelector('#hero-has-mask')).addClass("heroUp");
 		angular.element(document.querySelector('#nb-question-id')).addClass("hideUpElement");
@@ -73,9 +97,9 @@ angular.module('app.partysolo', [])
 		angular.element(document.querySelector('#answerArea')).addClass("visibleUpElement");
 	}, 3000);
 
-    // Set Ink
-    ionicMaterialInk.displayEffect();
+	// Set Ink
+	ionicMaterialInk.displayEffect();
 
-  	Waves.displayEffect();
+	Waves.displayEffect();
 
 })
