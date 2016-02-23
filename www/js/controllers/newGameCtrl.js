@@ -19,7 +19,7 @@ angular.module('app.newGame', [])
 			$rootScope.jar_deny.play();
 			return false;
 		}else {
-			GameService.createNewGame($rootScope.user.id,$scope.gameInput.name,$scope.gameInput.numberUser);
+			GameService.createNewGame($rootScope.user.id,$scope.gameInput.name,$scope.gameInput.numberUser, $stateParams.gameType);
 			$state.go("app.waitTheOthers");
 			$rootScope.popDrip.play();
 			$rootScope.chime_bell_ding.play();

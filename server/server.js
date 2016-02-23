@@ -76,8 +76,15 @@ app.get('/getQuizMusic1', function(req, res) {
 app.get('/getQuestionRandom/:idGame/:countQuestion',function(req,res){
     var game = findGameById(req.params.idGame);
     // var questions = [];
-    if(req.params.countQuestion != game.countCurrentQuestion){
-        game.countCurrentQuestion++;    
+    if(game.gameType === 'death'){
+        if(req.params.countQuestion != game.countCurrentQuestion){
+            game.countCurrentQuestion++;    
+        }
+    }else if(game.gameType == 'peace'){
+        
+    }
+    else if(game.gameType == 'duel'){
+        
     }
     // var randomQuestion = game.questions[Math.floor(Math.random()*questions.length)];
     // var randomQuestion = game.questions[Math.floor(Math.random()*questions.length)];
@@ -101,8 +108,8 @@ app.get('/getAllUsers', function(req,res){
 
 // GAME AREA
 // Route pour créer un nouveau game
-app.get('/createGame/:nameUser/:nameGame/:numberPlayer', function(req,res){
-    var game = new Game(req.params.nameGame, req.params.numberPlayer);
+app.get('/createGame/:nameUser/:nameGame/:numberPlayer/:gameType', function(req,res){
+    var game = new Game(req.params.nameGame, req.params.numberPlayer, req.params.gameType);
     game.usersInGame.push(findUserById(req.params.nameUser));
     gamesList.push(game);
     console.log('Nouvelle partie : game = '+ game);
@@ -122,7 +129,7 @@ app.get('/randomGame/:idUser', function(req,res){
         // gamesList.push(game);
         gamesRandomList = [];
     }else{
-        game = new Game('gameRandom'+Date.now(), 2);
+        game = new Game('gameRandom'+Date.now(), 2, 'randomGame');
         game.stateGame = 2;
         game.usersInGame.push(findUserById(req.params.idUser));
         gamesRandomList.push(game);
@@ -189,7 +196,7 @@ function Game(nameGame, numberPlayer, gameType){
     this.usersInGame = [];
     this.quizList = [];
     this.questions = getAllQuestions();
-    // this.questionsDone = [];
+    this.gameType = gameType;
     this.countCurrentQuestion = 0;
 }
 function Quiz(nameQuiz){

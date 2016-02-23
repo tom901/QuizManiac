@@ -5,19 +5,24 @@ angular.module('app.waitTheOthers', [])
 	$rootScope.WaitingTheOther.play();
 	$rootScope.WaitingTheOther.volume = 0.5;
 	$rootScope.WaitingTheOther.loop = true;
+	var refreshIntervalId = null;
 
-	var refreshIntervalId = setInterval(function(){
-		GameService.getGameByName($rootScope.game.name);
-		if($rootScope.game.stateGame == 0){
-			clearInterval(refreshIntervalId);
-			$rootScope.WaitingTheOther.pause();
-			angular.element(document.querySelector('#hero-has-mask')).addClass("heroUp");
-			angular.element(document.querySelector('#answerArea')).addClass("visibleUpElement");
-			$scope.countdown();
-		}
-	}, 100);
-
-
+	$scope.$on('$ionicView.enter', function () {
+		refreshIntervalId = setInterval(function(){
+			GameService.getGameByName($rootScope.game.name);
+			if($rootScope.game.stateGame == 0){
+				$rootScope.WaitingTheOther.pause();
+				angular.element(document.querySelector('#hero-has-mask')).addClass("heroUp");
+				angular.element(document.querySelector('#answerArea')).addClass("visibleUpElement");
+				$scope.countdown();
+			}
+		}, 100);
+	});
+	$scope.$on('$ionicView.leave', function () {
+        if(refreshIntervalId != null){
+            clearInterval(refreshIntervalId);
+        }
+    });
 
 	//Adding initial value for counter
 	//counter modelimiz için ilk değer atamasını yaptık.
