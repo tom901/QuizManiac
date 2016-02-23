@@ -1,7 +1,7 @@
 angular.module('app.gameOnline', [])
 
 .controller('GameOnlineCtrl', function($scope, $rootScope, $state, $http,$ionicHistory,
- $ionicSlideBoxDelegate, $timeout, ionicMaterialMotion, ionicMaterialInk,
+ $ionicSlideBoxDelegate, $timeout, ionicMaterialMotion, ionicMaterialInk,$interval,
  QuizService, GameService) {
   $scope.countdownTxt = 10;
     // $scope.countdown = function() {
@@ -18,53 +18,68 @@ angular.module('app.gameOnline', [])
     //     }, 1000);
     // }
     // $scope.countdown();
-    
-
-
 	//compteur pour faire défiler les questions lors de chaque réponse
 	$scope.countQuestion  = 0;
+    $scope.countTimer = 0;
+
+    //Récupération de la premiere question a afficher
     QuizService.getNextQuestion($rootScope.game.id,$scope.countQuestion, function(data){
         $scope.question = data;
     });
-
-    if($rootScope.game.gameType === 'death'){
-
-        var refreshIntervalId = setInterval(function(){ 
-            GameService.getGameByName($rootScope.game.name);
-            if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
-                QuizService.getNextQuestion($rootScope.game.id, $rootScope.game.countCurrentQuestion , function(data){
-                    $scope.question = data;
-                    $scope.countQuestion = $rootScope.game.countCurrentQuestion;
+    var refreshIntervalId = null;
+    
+    $scope.$on('$ionicView.enter', function () {
+        if($rootScope.game.gameType === 'death'){
+            refreshIntervalId = setInterval(function(){ 
+                GameService.getGameByName($rootScope.game.name);
+                if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
+                    QuizService.getNextQuestion($rootScope.game.id, $rootScope.game.countCurrentQuestion , function(data){
+                        $scope.question = data;
+                        $scope.countQuestion = $rootScope.game.countCurrentQuestion;
+                    });
+                }
+            }, 100);
+        }else if($rootScope.game.gameType === 'peace'){
+            refreshIntervalId = setInterval(function(){
+                if($scope.countTimer == 19){
+                    $scope.countQuestion++;
+                    QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){
+                        $scope.question = data;
+                        $scope.countTimer = 0;
+                    });
+                }
+                $scope.$apply(function() {
+                    $scope.countTimer++;
                 });
-            }
-        }, 100);
-    }else if($rootScope.game.gameType === 'peace'){
-        $scope.countTimer = 0;
-        setInterval(function(){
-            $scope.countTimer++;
-            if($scope.countTimer == 20){
-                $scope.countQuestion++;
-                QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){
-                    $scope.question = data;
-                    // $scope.countQuestion = $rootScope.game.countCurrentQuestion;
-                    $scope.countTimer = 0;
-                });
-            }
-        }, 1000);
-    }
-    else if($rootScope.game.gameType === 'duel'){
-        console.log('Partie Duel');
-    }
+            }, 1000);
+            // $scope.$on("$destroy", function(){
+            //     clearInterval(refreshIntervalId);
+            // });
+        }else if($rootScope.game.gameType === 'duel'){
+            console.log('Partie Duel');
+        }
+    });
+    $scope.$on('$ionicView.leave', function () {
+        if(refreshIntervalId != null){
+            console.log('gameOnlineCtrl $ionicView.leave : ');
+            console.log(refreshIntervalId);
+            $scope.countTimer = 0;
+            clearInterval(refreshIntervalId);
+        }
+    });
+
     var goodAnswer = 0;
 
-    $rootScope.$ionicGoBack = function(backCount) {
-        $ionicHistory.goBack(backCount);
-        console.log('dans la fonction back');
-        $rootScope.game = null;
-        $state.go('app.newOrJoinGame');
-        // clearInterval(refreshIntervalId);
-
-    };
+    // $rootScope.$ionicGoBack = function(backCount) {
+    //     $ionicHistory.goBack(backCount);
+    //     console.log('dans la fonction back');
+    //     $rootScope.game = null;
+    //     $state.go('app.home');
+    //     if(refreshIntervalId != null){
+    //         clearInterval(refreshIntervalId);
+    //     }
+    //     // $interval.cancel(refreshIntervalId);
+    // };
 
     $scope.nextSlide = function() {
         $ionicSlideBoxDelegate.next();

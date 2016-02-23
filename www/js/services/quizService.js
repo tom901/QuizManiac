@@ -14,8 +14,6 @@ angular.module('app.quizService', [])
     getNextQuestion : function(idGame, countQuestion, callback){
         return $http.get(URL_SERVER+'/getQuestionRandom/'+idGame+'/'+countQuestion).then(function(data) {
             if(callback){
-              console.log('data callback');
-              console.log(data);
               callback(data.data);
           }else{
               return data.data;
