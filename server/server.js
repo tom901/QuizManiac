@@ -76,12 +76,12 @@ app.get('/getQuizMusic1', function(req, res) {
 app.get('/getQuestionRandom/:idGame/:countQuestion',function(req,res){
     var game = findGameById(req.params.idGame);
     // var questions = [];
-    if(game.gameType === 'death'){
+    if(game.gameType === 'death' || game.gameType === 'random'){
         if(req.params.countQuestion != game.countCurrentQuestion){
             game.countCurrentQuestion++;    
         }
     }else if(game.gameType == 'peace'){
-        
+
     }
     else if(game.gameType == 'duel'){
         
@@ -129,7 +129,7 @@ app.get('/randomGame/:idUser', function(req,res){
         // gamesList.push(game);
         gamesRandomList = [];
     }else{
-        game = new Game('gameRandom'+Date.now(), 2, 'randomGame');
+        game = new Game('gameRandom'+Date.now(), 2, 'random');
         game.stateGame = 2;
         game.usersInGame.push(findUserById(req.params.idUser));
         gamesRandomList.push(game);

@@ -42,9 +42,9 @@
 			    {{question.name}}
 			  </div>
 
-			  <a ng-repeat="anwser in question.answers" class="item" ng-click="nextQuestion(anwser)" href="#">
+			  <div ng-repeat="anwser in question.answers" class="item" ng-click="nextQuestion(anwser)">
 			  {{anwser.name}}
-			  </a>
+			  </div>
 
 		</div>
         <div class="text-center">{{countQuestion}} / 10</div>
