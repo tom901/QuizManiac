@@ -51,7 +51,7 @@ angular.module('app.menu', [])
             $rootScope.audioTexte = "Muet ";
             $rootScope.audioIcon = "ion-volume-mute";
             $rootScope.audio.play();
-            $rootScope.audio.volume = 0.2;
+            $rootScope.audio.volume = 0.5;
             $rootScope.audio.loop = true
         }
         else{

@@ -21,7 +21,7 @@ angular.module('app.signup', [])
 		ionicMaterialMotion.slideUp({
 			selector: '.slide-up'
 		});
-		$rootScope.pad_confirm.volume = 0.1;
+		$rootScope.pad_confirm.volume = 0.5;
 		$rootScope.pad_confirm.play();
 	}, 300);
 

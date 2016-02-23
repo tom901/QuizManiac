@@ -1,4 +1,4 @@
-<ion-view title="Liste des Quiz">
+<ion-view title="Liste des Quiz" class="game-bg">
     <ion-content ng-class="{expanded:isExpanded}" class="animate-fade-slide-in">
         <div class="list card animated fadeIn">
             <div class="item item-body">
@@ -11,12 +11,22 @@
             </div>
 
         </div>
-        <div class="padding row game-bg">
-            <div ui-sref="app.partysolo" ng-repeat="quiz in listQuiz" class="col col-50" ng-click="setCurrentQuiz(quiz)">
+        <div  ng-repeat="quiz in listQuiz" class="padding row game-bg" ng-if="$index % 2 === 0">
+
+            <div ui-sref="app.partysolo" class="col col-50" ng-click="setCurrentQuiz(listQuiz[$index])" ng-if="$index < listQuiz.length && listQuiz[$index].name!= '' ">
                 <div class="ink card">
-                    <h4 class="padding-left padding-right">{{quiz.name}}</h4>
+                    <h4 class="padding-left padding-right">{{listQuiz[$index].name}}</h4>
                     <img class="full-image" src="img/lightbulb-quiz.png">
-                    <p class="padding-left padding-right padding-top">{{quiz.questions.length}} Questions</p>
+                    <p class="padding-left padding-right padding-top">{{listQuiz[$index].questions.length}} Questions</p>
+                </div>
+            </div>
+
+
+            <div ng-if="listQuiz[$index+1].questions.length>0" ui-sref="app.partysolo" class="col col-50" ng-click="setCurrentQuiz(listQuiz[$index+1])" ng-if="$index+1 < listQuiz.length">
+                <div class="ink card">
+                    <h4 class="padding-left padding-right">{{listQuiz[$index+1].name}}</h4>
+                    <img class="full-image" src="img/lightbulb-quiz.png">
+                    <p class="padding-left padding-right padding-top">{{listQuiz[$index+1].questions.length}} Questions</p>
                 </div>
             </div>
         </div>
