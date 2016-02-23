@@ -7,18 +7,22 @@ angular.module('app.gameOnline', [])
         $scope.countQuestion  = 0;
         $scope.countTimer = 0;
 
-        //Récupération de la premiere question a afficher
-        QuizService.getNextQuestion($rootScope.game.id,$scope.countQuestion, function(data){
-            $scope.question = data;
-        });
+        
         var refreshIntervalId = null;
 
-        var answerBlocked = false ;
-        console.log('$rootScope.game.gameType');
-        console.log($rootScope.game.gameType);
+        var answerBlocked = null;
+      
         $scope.$on('$ionicView.enter', function () {
+            //Récupération de la premiere question a afficher
+            QuizService.getNextQuestion($rootScope.game.id,$scope.countQuestion, function(data){
+                $scope.question = data;
+            });
+            
+            refreshIntervalId = null;
+            answerBlocked = false ;
+            $scope.countQuestion = 0;
+            $scope.countTimer = 0;
             if($rootScope.game.gameType === 'death' || $rootScope.game.gameType === 'random'){
-                console.log('gameType egale death ou random');
                 refreshIntervalId = setInterval(function(){
                     GameService.getGameByName($rootScope.game.name);
                     if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
@@ -53,6 +57,9 @@ angular.module('app.gameOnline', [])
                 answerBlocked = false;
                 clearInterval(refreshIntervalId);
             }
+            $scope.countQuestion = 0;
+            $scope.countTimer = 0;
+            $scope.question = null;
             $rootScope.game = null;
         });
 
@@ -112,17 +119,15 @@ angular.module('app.gameOnline', [])
         }, 700);
 
 
-        var refreshIntervalId = setInterval(function(){
-            GameService.getGameByName($rootScope.game.name);
-            if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
-                QuizService.getNextQuestion($rootScope.game.id, $rootScope.game.countCurrentQuestion , function(data){
-                    $scope.question = data;
-                    $scope.countQuestion = $rootScope.game.countCurrentQuestion;
-                });
-            }
-        }, 500);
-
-        var goodAnswer = 0;
+        // var refreshIntervalId = setInterval(function(){
+        //     GameService.getGameByName($rootScope.game.name);
+        //     if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
+        //         QuizService.getNextQuestion($rootScope.game.id, $rootScope.game.countCurrentQuestion , function(data){
+        //             $scope.question = data;
+        //             $scope.countQuestion = $rootScope.game.countCurrentQuestion;
+        //         });
+        //     }
+        // }, 500);
 
         $rootScope.$ionicGoBack = function(backCount) {
             $ionicHistory.goBack(backCount);

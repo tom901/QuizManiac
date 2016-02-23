@@ -158,11 +158,12 @@ app.get('/getAllGames', function(req,res){
     res.send(gamesList);
 });
 // Route pour terminer le jeu en court prend en parametre le nom du jeu en cours et change l'état de la partie
-app.get('/setGameToFinish/:nameGame', function(req,res){
-    var game = findGameByName(req.params.nameGame);
+app.get('/setGameToFinish/:idUser/:idGame', function(req,res){
+    var game = findGameById(req.params.idGame);
     if(game != null){
         //on met l'état de la partie a -1 car la partie est terminé
         game.stateGame = -1;
+        game.usersFinishGame.push(findUserById(req.params.idUser));
     }
     console.log('La partie courante : game = '+game);
     res.send(game);
@@ -194,6 +195,7 @@ function Game(nameGame, numberPlayer, gameType){
     this.stateGame = 1; // -1 partie terminé , 0 partie en cours, 1 partie en attente, 2 partie aleatoire
     this.numberPlayer = numberPlayer;
     this.usersInGame = [];
+    this.usersFinishGame = [];
     this.quizList = [];
     this.questions = getAllQuestions();
     this.gameType = gameType;
