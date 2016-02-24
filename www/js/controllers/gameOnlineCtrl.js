@@ -17,11 +17,12 @@ angular.module('app.gameOnline', [])
             QuizService.getNextQuestion($rootScope.game.id,$scope.countQuestion, function(data){
                 $scope.question = data;
             });
-            
+
             refreshIntervalId = null;
             answerBlocked = false ;
             $scope.countQuestion = 0;
             $scope.countTimer = 0;
+            
             if($rootScope.game.gameType === 'death' || $rootScope.game.gameType === 'random'){
                 refreshIntervalId = setInterval(function(){
                     GameService.getGameByName($rootScope.game.name);
