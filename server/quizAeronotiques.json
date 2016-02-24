@@ -1,0 +1,187 @@
+{
+    "type": "quiz",
+    "name": "L'Aéronautique",
+    "description": "Êtes vous un As de l'Aéronautique ?",
+    "questions": [
+        {
+            "name" : "Alan Shepard fut le premier américain à aller dans l'espace. Comment s'appelait le deuxième, qui faisait partie de la mission Mercury ?",
+            "answers" : [
+                {
+                    "name" : "Virgil Grissom",
+                    "weight": 1
+                },
+                {
+                    "name" : "Gordon Cooper",
+                    "weight": 0
+                },
+                {
+                    "name" : "John Glenn",
+                    "weight": 0
+                },
+                {
+                    "name" : "Scott Carpenter",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name" : "En 1960, combien de milliers d'avions civils étaient enregistrés aux Etats-Unis ?",
+            "answers" : [
+                {
+                    "name" : "7",
+                    "weight": 0
+                },
+                {
+                    "name" : "14",
+                    "weight": 0
+                },
+                {
+                    "name" : "48",
+                    "weight": 0
+                },
+                {
+                    "name" : "70",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "name" : "En 1960, quel pilote américain fut capturé par les Soviétiques ?",
+            "answers" : [
+                {
+                    "name" : "Francis Powel",
+                    "weight": 0
+                },
+                {
+                    "name" : "Gary Powers",
+                    "weight": 1
+                },
+                {
+                    "name" : "Elvis Drew",
+                    "weight": 0
+                },
+                {
+                    "name" : "Scott Campbell",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name" : "Le 12 août 1960 fut mis en orbite terrestre un satellite expérimental de communication. Comment s'appelait-il ?",
+
+            "answers" : [
+                {
+                    "name" : "Echo 1A",
+                    "weight": 1
+                },
+                {
+                    "name" : "Telstar",
+                    "weight": 0
+                },
+                {
+                    "name" : "Syncom I ",
+                    "weight": 0
+                },
+                {
+                    "name" : "Intelsat I,",
+                    "weight": 0
+                },
+                {
+                    "name" : "Early Bird,",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name" : "Le 15 janvier 1960, le premier avion lourd équipé de skis se posa à la base-station américaine de Byrd. Où était-elle située ?",
+
+            "answers" : [
+                {
+                    "name" : "Au Canada",
+                    "weight": 0
+                },
+                {
+                    "name" : "En Antarctique",
+                    "weight": 1
+                },
+                {
+                    "name" : "Heavenly Valley",
+                    "weight": 0
+                },
+                {
+                    "name" : "Alpine Meadows",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name" : "Le 22 juin 1960, quel grand avion commercial effectua son premier vol ?",
+
+            "answers" : [
+                {
+                    "name" : "Boeing 707",
+                    "weight": 1
+                },
+                {
+                    "name" : "Boeing 747",
+                    "weight": 0
+                },
+                {
+                    "name" : "Airbus A300",
+                    "weight": 0
+                },
+                {
+                    "name" : "Airbus A600",
+                    "weight": 0
+                }
+            ]
+        },
+        {
+            "name" : "Le 23 janvier 1960, Jacques Piccard et Don Walsh, à bord du bathyscaphe conçu par le professeur Auguste Piccard, établirent un nouveau record du monde de plongée. A combien de mètres descendirent-ils ?",
+
+            "answers" : [
+                {
+                    "name" : "13 150",
+                    "weight": 0
+                },
+                {
+                    "name" : "10 916",
+                    "weight": 0
+                },
+                {
+                    "name" : "11520",
+                    "weight": 0
+                },
+                {
+                    "name" : "12 1988",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "name" : "Quel compagnie aérienne vit le jour le 28 mars 1960 ?",
+            "answers" : [
+                {
+                    "name" : "Air Afrique",
+                    "weight": 1
+                },
+                {
+                    "name" : "Delta Air Lines",
+                    "weight": 0
+                },
+                {
+                    "name" : "Southwest Airlines",
+                    "weight": 0
+                },
+                {
+                    "name" : "American Airlines",
+                    "weight": 0
+                },
+                {
+                    "name" : "Pan American World Airways",
+                    "weight": 0
+                }
+            ]
+        }
+    ]
+}

@@ -95,7 +95,7 @@ angular.module('app.gameOnline', [])
                 }
         	}
             $scope.countdownTxt = 10;
-            $scope.maxQuestion = 10;
+            $scope.maxQuestion = $rootScope.game.questions.length;
             $scope.percentEvolution = 10;
             $scope.countQuestion  = 0;
             $scope.countTimer = 20;
@@ -118,7 +118,7 @@ angular.module('app.gameOnline', [])
             $scope.countQuestion = 0;
             $scope.countTimer = 20;
             if($rootScope.game.gameType === 'death' || $rootScope.game.gameType === 'random'){
-                refreshIntervalId = setInterval(function(){
+                refreshIntervalId = setInterval(function(){$scope.maxQuestion = $rootScope.game.questions.length;
                     GameService.getGameByName($rootScope.game.name);
                     if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
                         QuizService.getNextQuestion($rootScope.game.id, $rootScope.game.countCurrentQuestion , function(data){
@@ -143,6 +143,7 @@ angular.module('app.gameOnline', [])
                 console.log("$rootScope.game.gameType === 'peace'");
                 $scope.showTimer=true;
                 refreshIntervalId = setInterval(function(){
+                    $scope.maxQuestion = $rootScope.game.questions.length;
                     if($scope.countTimer == 1){
                         $scope.countQuestion++;
                         QuizService.getNextQuestion($rootScope.game.id, $scope.countQuestion , function(data){

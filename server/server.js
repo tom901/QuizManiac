@@ -13,6 +13,7 @@ var quizDisney1 = {};
 var quizDisney2 = {};
 var quizDisney3 = {};
 var quizMusic1 = {};
+var quizAero = {};
 
 initAllQuiz();
 
@@ -30,7 +31,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-//GET ALL ROUTE 
+//GET ALL ROUTE
 app.get('/', function(req,res){
     var routesList = [];
     routesList.push('Les différentes routes disponibles de l\'api');
@@ -39,6 +40,7 @@ app.get('/', function(req,res){
     routesList.push('/createGame/:nameUser/:nameGame/:numberPlayer');
     routesList.push('/joinUserInGame/:nameUser/:nameGame');
     routesList.push('/getQuizSimpsons');
+    routesList.push('/getQuizAero');
     routesList.push('/getQuizDisney');
     routesList.push('/getAllQuiz');
     routesList.push('/getAllUsers');
@@ -53,38 +55,49 @@ app.get('/getAllQuiz',function(req,res){
     res.setHeader('Cache-Control', 'no-cache');
     res.send(getAllQuiz());
 });
+
 app.get('/getQuizSimpsons', function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(this.quizSimpsons);
 });
+
+app.get('/getQuizAero', function(req, res) {
+    res.setHeader('Cache-Control', 'no-cache');
+    res.json(this.quizAero);
+});
+
 app.get('/getQuizDisney1', function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(this.quizDisney1);
 });
+
 app.get('/getQuizDisney2', function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(this.quizDisney2);
 });
+
 app.get('/getQuizDisney3', function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(this.quizDisney3);
 });
+
 app.get('/getQuizMusic1', function(req, res) {
     res.setHeader('Cache-Control', 'no-cache');
     res.json(this.quizMusic1);
 });
+
 app.get('/getQuestionRandom/:idGame/:countQuestion',function(req,res){
     var game = findGameById(req.params.idGame);
     // var questions = [];
     if(game.gameType === 'death' || game.gameType === 'random'){
         if(req.params.countQuestion != game.countCurrentQuestion){
-            game.countCurrentQuestion++;    
+            game.countCurrentQuestion++;
         }
     }else if(game.gameType == 'peace'){
 
     }
     else if(game.gameType == 'duel'){
-        
+
     }
     // var randomQuestion = game.questions[Math.floor(Math.random()*questions.length)];
     // var randomQuestion = game.questions[Math.floor(Math.random()*questions.length)];
@@ -98,9 +111,10 @@ app.get('/getQuestionRandom/:idGame/:countQuestion',function(req,res){
 app.get('/createUser/:nameUser', function(req,res){
   var user = new User(req.params.nameUser);
   usersList.push(user);
-  console.log('Nouvel utilisateur : user = '+ user);
+  console.log('Nouvel utilisateur : user = ', user);
   res.send(user);
 });
+
 // Route pour récuperer tous les utilisateurs
 app.get('/getAllUsers', function(req,res){
   res.send(usersList);
@@ -115,6 +129,7 @@ app.get('/createGame/:nameUser/:nameGame/:numberPlayer/:gameType', function(req,
     console.log('Nouvelle partie : game = '+ game);
     res.send(game);
 });
+
 // Route pour créer un nouveau game et jouer contre une personne aleatoire
 app.get('/randomGame/:idUser', function(req,res){
     var game;
@@ -135,10 +150,11 @@ app.get('/randomGame/:idUser', function(req,res){
         gamesRandomList.push(game);
         gamesList.push(game);
     }
-   
+
     res.send(game);
 });
-// Route pour joindre un utilisateur dans une partie 
+
+// Route pour joindre un utilisateur dans une partie
 app.get('/joinUserInGame/:idUser/:idGame', function(req,res){
     var game = findGameById(req.params.idGame);
     game.usersInGame.push(findUserById(req.params.idUser));
@@ -148,15 +164,18 @@ app.get('/joinUserInGame/:idUser/:idGame', function(req,res){
     }
     res.send(game);
 });
+
 //Route pour récupéré des informatons sur un game en court
 app.get('/getGameByName/:nameGame',function(req,res){
     var game = findGameByName(req.params.nameGame);
     res.send(game);
 });
+
 // Route pour récuperer toutes les parties
 app.get('/getAllGames', function(req,res){
     res.send(gamesList);
 });
+
 // Route pour terminer le jeu en court prend en parametre le nom du jeu en cours et change l'état de la partie
 app.get('/setGameToFinish/:idUser/:idGame', function(req,res){
     var game = findGameById(req.params.idGame);
@@ -168,6 +187,7 @@ app.get('/setGameToFinish/:idUser/:idGame', function(req,res){
     console.log('La partie courante : game = '+game);
     res.send(game);
 });
+
 // Route pour récuperer toutes les parties
 app.get('/getAllGamesNotStarted', function(req,res){
     var listGameNotStarted = [];
@@ -179,7 +199,7 @@ app.get('/getAllGamesNotStarted', function(req,res){
     res.send(listGameNotStarted);
 });
 
-//LUNCH THE SERVER 
+//LUNCH THE SERVER
 app.listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
@@ -271,9 +291,10 @@ function getAllQuiz(){
     quizListGlobal.push(this.quizDisney2);
     quizListGlobal.push(this.quizDisney3);
     quizListGlobal.push(this.quizMusic1);
+    quizListGlobal.push(this.quizAero);
     return quizListGlobal;
 }
-function initAllQuiz(){ 
+function initAllQuiz(){
     fs.readFile('quizSimpsons.json', function(err, data) {
         this.quizSimpsons = JSON.parse(data);
     });
@@ -289,15 +310,7 @@ function initAllQuiz(){
     fs.readFile('quizMusic1.json', function(err, data) {
         this.quizMusic1 = JSON.parse(data);
     });
+    fs.readFile('quizAeronotiques.json', function(err, data) {
+        this.quizAero = JSON.parse(data);
+    });
 }
-
-
-
-
-
-
-
-
-
-
-
