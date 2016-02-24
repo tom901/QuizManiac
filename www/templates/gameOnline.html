@@ -1,53 +1,70 @@
-<ion-view title="Quiz Maniac">
+<ion-view title="" hide-back-button="true">
     <ion-content overflow-scroll="true" padding="false" class="has-header" ng-class="{expanded:$scope.isExpanded}">
-        <div class="hero has-mask slide-up game-bg" style="background-image: url('img/Solo.png');">
-			<div class="content">
-	            <div class="spacer" style="width: 100%; height: 200px;"></div>
+        <div class="hero has-mask slide-up" style="background-image: url('img/PartieEnLigne.png');background-position: center; " id="hero-has-mask">
+            <div class="content">
                 <h3><a class="light"></a></h3>
             </div>
         </div>
-       <!--  <div class="mid-bar dark-bg z1 padding animate-fade-slide-in-right">
-            <h3>Partie : {{quizSelected.name}}</h3>
+        <div class="mid-bar dark-bg z1 padding animate-fade-slide-in-right blink_me" ng-show="!hideAnswerarea">
+            <h3>Répondez le premier aux 10 questions</h3>
         </div>
-        <div class="content double-padding animate-fade-slide-in-right">
-            <h4 class="positive">Description</h4>
-            <p class="text-muted">
-                {{quizSelected.description}}
-            </p>
-            <h3 class="outline padding balanced inline img-rounded">
-               {{quizSelected.questions.length}} questions
-           </h3> -->
-  			<!-- <div class="item html">
-			    <h2>0</h2>
-			    <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
-			     <g>
-			      <title>Layer 1</title>
-			      <circle id="circle" class="circle_animation" r="69.85699" cy="81" cx="81" stroke-width="8" stroke="#6fdb6f" fill="none"/>
-			     </g>
-			    </svg>
-			</div> -->
-        <!-- </div> -->
-<!--         <button class="button button-fab button-fab-bottom-right button-assertive icon ion-paper-airplane waves-effect waves-button waves-light"></button> -->
-<!--         <script src="../../../../bower_components/js/waves.min.js"></script>
-        <script src="../js/material-ionic.js"></script>
-        <script>
-        Waves.displayEffect();
-        setTimeout(function() {
-            Mi.motion.slideUp('.slide-up');
-        }, 0);
-        </script> -->
-        <div class="list">
-			  
-			  <div  class="item item-divider">
-			    {{question.name}}
-			  </div>
+        <div id="answerArea" class="animated faadeInUp" ng-show="!hideAnswerarea">
+            <div class="mid-bar dark-bg z1 padding animate-fade-slide-in-right item-text-wrap text-tenter">
+                <h4>{{question.name}}</h4>
+            </div>
+            <div class="padding">
+                <div class="list">
+                    <a class="item item-avatar item-icon-right bordered-bottom"
+                    ng-repeat="anwser in question.answers"  ng-click="nextQuestion(anwser)">
+                        <img src="img/icons/countdown.png">
+                        <h2> {{anwser.name}} </h2>
+                        <i class="icon ion-help blink_me muted"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card" ng-show="!hideAnswerarea">
+            <!-- <div class="item item-text-wrap text-center">
+                <h2><strong>Sur un total de {{quizSelected.questions.length}} vous avez réussi à répondre à : {{goodAnswer}} questions</strong></h2>
+            </div> -->
+            <div class="item">
+                <div class="cssProgress">
+                    <div class="cssProgress-label2 cssProgress-label2-center"><h4>{{countQuestion+1}} / {{maxQuestion}}</h4></div>
+                    <div class="progress3">
+                        <div class="cssProgress-bar cssProgress-warning cssProgress-active" style="width: {{ percentEvolution }}%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="!hideAnswerarea" class="text-center" ng-show="showTimer">Encore {{countTimer}} s</div>
 
-			  <div ng-repeat="anwser in question.answers" class="item" ng-click="nextQuestion(anwser)">
-			  {{anwser.name}}
-			  </div>
-
-		</div>
-        <div class="text-center">{{countQuestion}} / 10</div>
-        <div class="text-center">Encore {{countTimer}} s</div>
+        <div ng-show="hideAnswerarea">
+            <div id="scoreArea" class="scoreArea">
+                <div class="button-bar">
+                    <button ui-sref="app.home" class="button button-positive waves-effect waves-button waves-classic icon ion-home"> Acceuil</button>
+                    <button ui-sref="app.newOrJoinGame" class="button button-calm waves-effect waves-button waves-classic icon ion-loop"> Rejouer</button>
+                    <button ui-sref="app.listAllQuiz" class="button button-positive waves-effect waves-button waves-classic icon ion-bowtie"> Autres</button>
+                </div>
+                <div class="">
+                    <div id="g1"></div>
+                    <div id="g2"></div>
+                    <div id="wrap"></div>
+                </div>
+                <!-- <div class="card"> -->
+                    <!-- <div class="item item-text-wrap text-center">
+                        <h2><strong>Sur un total de {{quizSelected.questions.length}} vous avez réussi à répondre à : {{goodAnswer}} questions</strong></h2>
+                    </div> -->
+                    <!-- <div class="item">
+                        <div class="cssProgress">
+                            <-- <div class="cssProgress-label2 cssProgress-label2-center"><h1>{{pourcentage}} %</h1></div> ->
+                            <div class="progress3">
+                                <div class="cssProgress-bar cssProgress-warning cssProgress-active" style="width: {{ pourcentage }}%;"></div>
+                            </div>
+                        </div>
+                    </div> -->
+                <!-- </div> -->
+            </div>
+        </div>
+        <!-- <div class="text-center">{{countQuestion+1}} / 10</div> -->
     </ion-content>
 </ion-view>

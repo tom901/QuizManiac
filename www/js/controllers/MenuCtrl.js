@@ -2,8 +2,8 @@ angular.module('app.menu', [])
 .controller('MenuCtrl', function($rootScope) {
     $rootScope.audioTexte = "Muet ";
     $rootScope.audioIcon = "ion-volume-mute";
-    var audios = ["audio/IntroRemix.mp3","audio/Quizmania - Summer.mp3","audio/IntroRemix.mp3","audio/Quizmania - Summer.mp3"];
-    var id = Math.floor(Math.random() * 3) + 1 ;
+    var audios = ["audio/IntroRemix.mp3","audio/IntroRemix.mp3","audio/IntroRemix.mp3","audio/Quizmania - Summer.mp3","audio/Quizmania - Summer.mp3","audio/Quizmania - Summer.mp3"];
+    var id = Math.floor(Math.random() * 5) + 1 ;
 
     var goodAnswerSound = "audio/xylophone_affirm.wav";
     $rootScope.goodAnswerSound = new Audio(goodAnswerSound);
@@ -23,7 +23,8 @@ angular.module('app.menu', [])
     var WaitingTheOther ="audio/Quizmania - Disco.mp3";
     $rootScope.WaitingTheOther = new Audio(WaitingTheOther);
 
-    var QuizmaniaSpeedRound ="audio/Quizmania - Speed Round.mp3";
+    //var QuizmaniaSpeedRound ="audio/Quizmania - Speed Round.mp3";
+    var QuizmaniaSpeedRound ="audio/countdown60s_wav_by_nsstudios_320771_2776777_lq.mp3";
     $rootScope.QuizmaniaSpeedRound = new Audio(QuizmaniaSpeedRound);
 
     var pad_confirm ="audio/pad_confirm.wav";
@@ -51,7 +52,7 @@ angular.module('app.menu', [])
             $rootScope.audioTexte = "Muet ";
             $rootScope.audioIcon = "ion-volume-mute";
             $rootScope.audio.play();
-            $rootScope.audio.volume = 0.5;
+            $rootScope.audio.volume = 0.3;
             $rootScope.audio.loop = true
         }
         else{

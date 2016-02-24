@@ -3,6 +3,7 @@ angular.module('app.newGame', [])
 	$scope.gameInput = {};
 	console.log('NewGameCtrl : $stateParams.gameType');
 	console.log($stateParams.gameType);
+	$scope.gameType=$stateParams.gameType;
 	$scope.createGame = function(){
 		if($scope.gameInput.name == "" || $scope.gameInput.name == undefined){
 			$ionicPopup.alert({
