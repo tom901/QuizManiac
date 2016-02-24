@@ -14,6 +14,7 @@ angular.module('app.gameOnline', [])
             var gameEnded = false;
             var nbCall = 0;
             $scope.hideAnswerarea = false;
+            $scope.hideBlinkingText = false;
         	$scope.gamIsFinished = function() {
                 toastr.remove();
     			$scope.hideAnswerarea = true;
@@ -118,6 +119,7 @@ angular.module('app.gameOnline', [])
             $scope.countQuestion = 0;
 
             if($rootScope.game.gameType === 'death' || $rootScope.game.gameType === 'random'){
+                $scope.showTimer=false;
                 refreshIntervalId = setInterval(function(){$scope.maxQuestion = $rootScope.game.questions.length;
                     GameService.getGameByName($rootScope.game.name);
                     if($rootScope.game.countCurrentQuestion > $scope.countQuestion){
@@ -168,6 +170,9 @@ angular.module('app.gameOnline', [])
                 console.log('Partie Duel');
             }
 
+            $timeout(function() {
+                $scope.hideBlinkingText=true;
+            }, 3000);
             $scope.goodAnswer = 0;
 
             $scope.nextQuestion = function(answer){
@@ -240,6 +245,7 @@ angular.module('app.gameOnline', [])
             Waves.displayEffect();
         });
         $scope.$on('$ionicView.beforeLeave', function () {
+            $scope.hideBlinkingText=false;
             document.getElementById('g1').innerHTML = "";
             document.getElementById('g2').innerHTML = "";
             $scope.countdownTxt = 10;
