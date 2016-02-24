@@ -116,7 +116,7 @@ angular.module('app.gameOnline', [])
             refreshIntervalId = null;
             answerBlocked = false ;
             $scope.countQuestion = 0;
-            $scope.countTimer = 20;
+
             if($rootScope.game.gameType === 'death' || $rootScope.game.gameType === 'random'){
                 refreshIntervalId = setInterval(function(){$scope.maxQuestion = $rootScope.game.questions.length;
                     GameService.getGameByName($rootScope.game.name);
