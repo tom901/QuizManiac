@@ -457,6 +457,15 @@
     -webkit-animation: backgroundScroll 20s linear infinite;
     animation: backgroundScroll 20s linear infinite;
 }
+
+.bg-scroll{
+    background-image: url('../img/BgScroll.png');
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-size: auto;
+    -webkit-animation: backgroundScroll 20s linear infinite;
+    animation: backgroundScroll 20s linear infinite;
+}
 @-webkit-keyframes backgroundScroll {
     from {background-position: 0 0;}
     to {background-position: -1000px 0;}
@@ -473,4 +482,18 @@
 
 @keyframes blinker {
   50% { opacity: 0.0; }
+}
+a.bordered-bottom {
+    border-style: solid;
+    border-color: #ddd;
+    border-bottom: 1px solid #ddd !important;
+}
+#g1 {
+    /* width: 400px; */
+    /* height:300px; */
+}
+#wrap{
+    height: 100%;
+    width: 100%;
+    background-color: orange;
 }

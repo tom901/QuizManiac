@@ -8,6 +8,11 @@ angular.module('app.listAllQuiz', [])
     });
 	$scope.setCurrentQuiz = function(quizSelected){
 		$rootScope.popDrip.play();
+		$rootScope.audio.pause();
+		$rootScope.WaitingTheOther.load();
+		$rootScope.WaitingTheOther.play();
+		$rootScope.WaitingTheOther.volume = 0.8;
+		$rootScope.WaitingTheOther.loop = true;
 		$rootScope.quizSelected = quizSelected;
 	}
 

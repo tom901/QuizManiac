@@ -2,70 +2,67 @@ angular.module('app.partysolo', [])
 
 .controller('PartySoloCtrl', function($scope, $rootScope, $state, $http, $ionicSlideBoxDelegate, $timeout, ionicMaterialMotion, ionicMaterialInk) {
 
-	$rootScope.audio.pause();
-	$rootScope.WaitingTheOther.play();
-	$rootScope.WaitingTheOther.volume = 0.5;
-	$rootScope.WaitingTheOther.loop = true;
-
 	$scope.countdownTxt = 10;
-	// $scope.countdown = function() {
-	//     var time = 10; /* how long the timer runs for */
-	//     var initialOffset = '440';
-	//     var i = 1
-	//     var interval = setInterval(function() {
-	//         angular.element('.circle_animation').css('stroke-dashoffset', initialOffset-(i*(initialOffset/time)));
-	//         $scope.countdownTxt = i;
-	//         if (i == time) {
-	//             clearInterval(interval);
-	//         }
-	//         i++;
-	//     }, 1000);
-	// }
-	// $scope.countdown();
 	$scope.party = "";
+	$scope.hideAnswerarea = false;
 
 
 	//compteur pour faire défiler les questions lors de chaque réponse
 	$scope.countQuestion  = 0;
-	var goodAnswer = 0;
-
-	$scope.nextSlide = function() {
-		$ionicSlideBoxDelegate.next();
-	}
+	$scope.goodAnswer = 0;
 
 	$scope.nextQuestion = function(answer){
 		if(answer.weight == 1){
-			toastr.remove()
+			toastr.remove();
 			toastr.success('Bonne réponse !', 'Bien joué');
-			if ($rootScope.goodAnswerSound.playing) {
-				$rootScope.goodAnswerSound.currentTime = 0;
-			}
+			$rootScope.goodAnswerSound.load();
 			$rootScope.goodAnswerSound.play();
-			goodAnswer++;
+			$scope.goodAnswer++;
 		}else{
-			if ($rootScope.jar_deny.playing) {
-				$rootScope.jar_deny.currentTime = 0;
-			}
+			$rootScope.jar_deny.load();
 			$rootScope.jar_deny.play();
 			toastr.remove()
-			toastr.error('Mauvaise réponse !', 'Bouh !');
+			toastr.error('Mauvaise réponse !', 'Oups !');
 		}
 
 		if($scope.countQuestion == $rootScope.quizSelected.questions.length - 1){
+			toastr.remove();
+			$scope.hideAnswerarea = true;
 			$rootScope.WaitingTheOther.pause();
 			$rootScope.WaitingTheOther.volume = 0;
 			$rootScope.Round_Complete.play();
 			$rootScope.Round_Complete.volume = 0.5;
-
-			toastr.remove();
-			alert('Vous avez répondu à '+ Math.round( (goodAnswer * 100) / $rootScope.quizSelected.questions.length) +'% de bonnes réponses');
-
-			$rootScope.Round_Complete.pause();
-
-			$rootScope.audio.play();
-			$state.go('app.home');
-			$scope.countQuestion  = 0;
-			goodAnswer = 0;
+			angular.element(document.querySelector('#answerArea')).addClass("hideUpElement");
+			toastr.success('Fin de la partie !');
+			$scope.pourcentage = Math.round( ($scope.goodAnswer * 100) / $rootScope.quizSelected.questions.length);
+			$scope.g1 = new JustGage({
+				id: "g1",
+				value: $scope.pourcentage,
+				min: 0,
+				max: 100,
+				relativeGaugeSize: true,
+				title: "Votre score est de",
+		        symbol: '%',
+		        pointer: true,
+		        pointerOptions: {
+		          toplength: -15,
+		          bottomlength: 10,
+		          bottomwidth: 12,
+		          color: '#8e8e93',
+		          stroke: '#ffffff',
+		          stroke_width: 3,
+		          stroke_linecap: 'round'
+		        },
+		        gaugeWidthScale: 0.6,
+		        counter: true
+			});
+			// $timeout(function () {
+			// 	$rootScope.Round_Complete.pause();
+			// 	$rootScope.audio.play();
+			// 	//$state.go('app.home');
+			// 	$scope.countQuestion  = 0;
+			// }, 5000);
+			//$scope.goodAnswer = 0;
 		}else{
 			$scope.countQuestion++;
 		}
@@ -96,6 +93,20 @@ angular.module('app.partysolo', [])
 	$timeout(function() {
 		angular.element(document.querySelector('#answerArea')).addClass("visibleUpElement");
 	}, 3000);
+	$scope.$on('$ionicView.beforeLeave', function () {
+		$rootScope.Round_Complete.pause();
+		$rootScope.Round_Complete.load();
+		$rootScope.audio.load();
+		$rootScope.audio.play();
+		$rootScope.WaitingTheOther.pause();
+		$rootScope.WaitingTheOther.load();
+		$scope.countdownTxt = 10;
+		$scope.party = "";
+		$scope.hideAnswerarea = false;
+		toastr.remove();
+		$scope.countQuestion  = 0;
+		$scope.goodAnswer = 0;
+	});
 
 	// Set Ink
 	ionicMaterialInk.displayEffect();
